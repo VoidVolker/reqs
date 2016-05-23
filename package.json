@@ -4,11 +4,12 @@
   "description": "REQuest jSon interface for WebSockets, HTTP and any other protocols",
   "main": "reqs.js",
   "scripts": {
-    "test": "node ./test/test.js",
-    "build": "coffee -b -m -c ./dev/*.coffee && cd dev && node build",
-    "b": "coffee -b -m -c ./dev/*.coffee && cd dev && node build",
-    "watch": "./dev/node_modules/nano-watcher/bin/nano-watcher -c ./dev",
-    "w": "./dev/node_modules/nano-watcher/bin/nano-watcher -c ./dev"
+    "test":   "node ./test/test.js",
+    "build":  "coffee -b -m -c ./dev/*.coffee && cd dev && node build",
+    "b":      "coffee -b -m -c ./dev/*.coffee && cd dev && node build",
+    "watch":  "./dev/node_modules/nano-watcher/bin/nano-watcher -c ./dev",
+    "w":      "./dev/node_modules/nano-watcher/bin/nano-watcher -c ./dev",
+    "p":      "git status && npm version patch && npm publish"
   },
   "repository": {
     "type": "git",
