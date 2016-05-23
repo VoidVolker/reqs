@@ -1,0 +1,20 @@
+{
+  "name": "reqs-dev",
+  "version": "1.0.0",
+  "description": "reqs development package",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "reqsdev",
+    "reqs-dev",
+    "reqs-build"
+  ],
+  "author": "Void Volker <vvr@tutanota.com> (https://github.com/VoidVolker)",
+  "license": "MIT",
+  "dependencies": {
+    "nano-watcher": "^2.0.7",
+    "uglify-js": "^2.6.2"
+  }
+}

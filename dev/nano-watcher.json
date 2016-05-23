@@ -1,0 +1,37 @@
+{
+    "sources": [
+        {
+            "path": "../reqs.js",
+            "command": {
+                "path": "./",
+                "name": "dist build -- ",
+                "app": "node",
+                "args": ["build.js"]
+            }
+        }, {
+            "path": "./",
+            "ext": ["coffee"],
+            "command": {
+                "name": "coffee dev -- ",
+                "app": "coffee",
+                "args": [ "-m", "-b", "-c", {"data": "file", "alt": "*.coffee"} ]
+            }
+        }, {
+            "path": "./client/app",
+            "ext": ["coffee"],
+            "command": {
+                "name": "coffee client -- ",
+                "app": "coffee",
+                "args": [ "-m", "-b", "-c", {"data": "file", "alt": "*.coffee"} ]
+            }
+        }, {
+            "path": "./server",
+            "ext": ["js"],
+            "command": {
+                "name": "WS server -- ",
+                "app": "node-debug",
+                "args": ["--no-preload", "--cli", "server.js"]
+            }
+        }
+    ]
+}

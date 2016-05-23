@@ -1,0 +1,33 @@
+{
+  "name": "reqs",
+  "version": "4.0.0",
+  "description": "REQuest jSon interface for WebSockets, HTTP and any other protocols",
+  "main": "reqs.js",
+  "scripts": {
+    "test": "node ./test/test.js",
+    "build": "coffee -b -m -c ./dev/*.coffee && cd dev && node build",
+    "b": "coffee -b -m -c ./dev/*.coffee && cd dev && node build",
+    "watch": "./dev/node_modules/nano-watcher/bin/nano-watcher -c ./dev",
+    "w": "./dev/node_modules/nano-watcher/bin/nano-watcher -c ./dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VoidVolker/reqs.git"
+  },
+  "keywords": [
+    "reqs",
+    "request",
+    "json",
+    "websockets",
+    "API",
+    "WS API",
+    "HTTP API",
+    "Web API"
+  ],
+  "author": "Void Volker <vvr@tutanota.com> (https://github.com/VoidVolker)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VoidVolker/reqs/issues"
+  },
+  "homepage": "https://github.com/VoidVolker/reqs#readme"
+}
