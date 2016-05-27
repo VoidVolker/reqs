@@ -53,6 +53,12 @@ class Main
     constructor: ->
         window.API = createApi()
         connect APP
-        console.log 'Welcome to Reqs example!\nType:\n    API.client.ping()\nOr:\n    API.client.callScreen()\nThen check server console messages and Network:ws tab in browser to see details. Library in develop and this just basic example.'
+        console.log 'Welcome to Reqs example!
+        \nType:
+        \n    API.client.ping()
+        \nOr:
+        \n    API.client.callScreen()
+        \nThen check server console messages and Network:ws tab in
+        browser to see details. Library in develop and this just basic example.'
 
     $ Main
