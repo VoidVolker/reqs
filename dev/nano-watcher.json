@@ -30,7 +30,7 @@
             "command": {
                 "name": "WS server -- ",
                 "app": "node-debug",
-                "args": ["--no-preload", "--cli", "server.js"]
+                "args": ["--no-preload", "-b=false", "--cli", "server.js"]
             }
         }
     ]

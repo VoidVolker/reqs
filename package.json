@@ -9,7 +9,8 @@
     "b":      "coffee -b -m -c ./dev/*.coffee && cd dev && node build",
     "watch":  "./dev/node_modules/nano-watcher/bin/nano-watcher -c ./dev",
     "w":      "./dev/node_modules/nano-watcher/bin/nano-watcher -c ./dev",
-    "p":      "git status && npm version patch && npm publish"
+    "patch":  "git status && npm version patch",
+    "minor":  "git status && npm version minor"
   },
   "repository": {
     "type": "git",

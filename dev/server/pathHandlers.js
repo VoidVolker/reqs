@@ -1,47 +1,36 @@
 var Reqs = require('../../reqs.js');
 
-var serv = new Reqs({
-    SPI: {
-        spi: function(a, cb){
-            console.log('spi', a);
+var api = new Reqs({
+    server: {
+        // this = {
+        //     reqs: <reqs instance>
+        //     conn: <connection object>
+        //     [cb: <callback>]
+        // }
+        ping: function(time){
+            var t1 = time ? Date.now()-time : 0 ;
+            console.log('ping from client:', t1);
+            if( this.cb ){
+                this.cb(t1, Date.now());
+            }
+        },
+        callScreen: function(){ // Emulate server call of client server API from client
+            var conn = this.conn;
+            api.client.screen.call(conn, function(w, h){
+                console.log('Retrieve screen size from client:', w, h);
+            });
         }
     }
-    , CPI: ['cpi']
-
-    // API: {
-    //     'ping': function(time, cb){
-    //         console.log('ping', time);
-    //         time = time ? Date.now()-time : 0 ;
-    //         serv.CPI.pong(
-    //             {
-    //                 time: Date.now()
-    //                 , ping: time
-    //             }
-    //         );
-    //     }
-    //     , 'pong': function(args, cb){
-    //         console.log('/ pong', args);
-    //     }, 'test': function(a, b){
-    //         console.log('Test data from client:', a, b);
-    //         if( this.cb ){
-    //             console.log('Test from client have callback');
-    //             this.cb('data', 'via', 'server', 'callback', function(a){
-    //                 console.log('Client answer on CB: ', a);
-    //             });
-    //         }
-    //         return ["test", "answer"];
-    //     }
-    // }
-    // , CPI: ['ping', 'pong']
+    , client: ['screen'] // Client server API list
     , send: function(data){
         this.sendText(data);
     }
 });
 
-function rootHandle(str) { // this = connection
+function rootHandle(str) {
     try{
         console.info('    parsing string:', str);
-        serv.parse(str, this);
+        api.parse(str, this); // this - is connection onject
     } catch(e){
         console.log('Reqs error: ', e);
     }

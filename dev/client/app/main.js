@@ -2,35 +2,46 @@
 var Main;
 
 Main = (function() {
-  var apiList, connect, createApi;
-
-  apiList = {
-    test: function(a, b) {
-      console.log('Test return from server:', a, b);
-    }
-  };
+  var connect, createApi;
 
   createApi = function() {
-    return new API(function(d) {
-      if (APP.WS.readyState === 1) {
-        APP.WS.send(d);
+    return new Reqs({
+      send: function(d) {
+        if (APP.WS.readyState === 1) {
+          APP.WS.send(d);
+        }
+      },
+      server: {
+        screen: function() {
+          if (this.cb) {
+            this.cb(window.outerWidth, window.outerHeight);
+          }
+        }
+      },
+      client: {
+        ping: function(pingxt) {
+          pingxt(Date.now(), function(ping1, time) {
+            var ping2;
+            ping2 = Date.now() - time;
+            console.log('ping to server:', ping1, '/ ping from server:', ping2, '/ total:', ping1 + ping2);
+          });
+        }
       }
-    }, apiList);
+    });
   };
 
   connect = function(obj) {
     var reconnectTimer;
-    console.log('Connecting...');
     reconnectTimer = null;
     return new WS({
       host: 'localhost',
       port: 10001,
       open: function(e) {
         obj.WS = this;
-        console.log('Connected');
+        API.build();
       },
       msg: function(e) {
-        APP.API.parse(e.data);
+        API.parse(e.data);
       },
       error: function(e) {},
       close: function(e) {
@@ -45,10 +56,9 @@ Main = (function() {
   };
 
   function Main() {
-    $window = $(window); $body = $(window.body);
-    var api;
-    APP.API = api = createApi();
+    window.API = createApi();
     connect(APP);
+    console.log('Welcome to Reqs example!\nType:\n    API.client.ping()\nOr:\n    API.client.callScreen()\nThen check server console messages and Network:ws tab in browser to see details. Library in develop and this just basic example.');
   }
 
   $(Main);

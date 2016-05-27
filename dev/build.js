@@ -15,7 +15,7 @@ webmapPath = '../dist-web/reqs.min.map';
 
 libSource = fs.readFileSync(srcPath).toString();
 
-webresult = '(this.Reqs=function(module){' + libSource + 'return module.exports;})(this.module || {})';
+webresult = 'this.Reqs=(function(module){' + libSource + 'return module.exports;})(this.module || {})';
 
 webmin = UglifyJS.minify(webresult, {
   fromString: true

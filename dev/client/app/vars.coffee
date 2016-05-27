@@ -2,6 +2,7 @@ $window = $()
 $body = $()
 id = {}
 APP = {}
+API = null
 noop = ->
 
 ( (exports) ->

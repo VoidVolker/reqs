@@ -4,47 +4,47 @@
  */
 /*
 
-request type string: "function name" -> SPI["function name"]()
+request type string: "function name" -> server["function name"]()
 
 request type object: {
     CALL: "functionName"
-    ARGS: <any data type>,
+    ARGS: [<any data>],
     [ CB: <cb_number> ]
 }
 
 request type object: {
     CALLBACK: "<cbid>"
-    ARGS: <any data type>,
+    ARGS: [<any data>],
     [ CB: <cb_number> ]
 }
 
 examples:
 {
     "ping": {
-        "ARG": 1448523645087
+        "ARGS": [1448523645087]
     }
 }
 
 {
     "pong": {
-        "ARG": {
+        "ARGS": [{
             "time": 1448523645089,
             "ping": 1448523645087
-        }
+        }]
     }
 }
 
 request ping example with CB:
 {
     "ping": {
-        "ARG": 1448523501870,
+        "ARGS": [1448523501870],
         "CB": 0
     }
 }
 
 {
     "CB": {
-        "ARG": [
+        "ARGS": [
             0, {
                 "time": 1448523501875,
                 "ping": 1448523501870
@@ -59,10 +59,10 @@ var myapi1 = reqs.new({
         // this === [connection object]
         this.sendText(str); // Websockets
     }
-    , SPI: { // Server programming interface: actions for call's from other side
+    , server: { // Server programming interface: actions for call's from other side
         'func1': function(arg){ // Mirror API way (server and client have same methods and functions)
             log.info('/command1 func1');
-            return "some answer"; // same as: myapi1.CPI.func1("some answer")
+            return "some answer"; // same as: myapi1.client.func1("some answer")
         }
         , 'func2': function(arg, cb){  // Callback and promise way
             // cb === function | cb === undefined
@@ -80,10 +80,10 @@ var myapi1 = reqs.new({
     ]
 );
 
-myapi1.parse('"json string with data from other side"', connection); // connection === [connection object] (will be transferd to SPI functions, sender, callbacks and promises). Also used to for callbacks
-myapi1.CPI.f3({somekey: "somedata" });
-myapi1.CPI.f4(123);
-myapi1.CPI.f5("123");
+myapi1.parse('"json string with data from other side"', connection); // connection === [connection object] (will be transferd to server functions, sender, callbacks and promises). Also used to for callbacks
+myapi1.client.f3({somekey: "somedata" });
+myapi1.client.f4(123);
+myapi1.client.f5("123");
 
 var myapi2 = reqs.new({
     send: function(str){
@@ -126,10 +126,10 @@ function getInfo(method){
         var res1 = []
             , res2 = []
         ;
-        forObj( this.reqs.SPI, function(f, name){
+        forObj( this.reqs.server, function(f, name){
             res1.push(name);
         });
-        forObj( this.reqs.CPI, function(f, name){
+        forObj( this.reqs.client, function(f, name){
             res2.push(name);
         });
         this.cb(res1, res2);
@@ -149,9 +149,9 @@ function getInfo(method){
 function reqsParse(request, conn){ // JSON Request parser // Разбор входящего запроса
     var obj
         , fName
-        , spi = this.SPI
+        , spi = this.server
         , params
-        // , cpi = this.CPI
+        // , cpi = this.client
         , result
         , arr
         , xt
@@ -277,7 +277,7 @@ function reqsParse(request, conn){ // JSON Request parser // Разбор вхо
     }
 }
 
-function reqsValidate(obj){
+function validate(obj){
     return true;
 }
 
@@ -346,8 +346,31 @@ function createCBWrapper(cbid, conn ){
     }
 }
 
-function createWrapper(fName, sender, conn){
-    var localReqs = this;
+function createClient(reqs){
+    if( reqs.client === undefined ){
+        var send = reqs.send;
+        reqs.client = function(fName, conn, args, cb){
+            var req = { CALL: fName };
+                // , args = {}
+            if( isFunction(cb) ){
+                req.CB = reqs.createCallback(cb);
+            } else if( isFunction(conn) ){
+                req.CB = reqs.createCallback(conn);
+                conn === undefined;
+            } else if( isFunction(args) ){
+                req.CB = reqs.createCallback(args);
+                args === undefined;
+            }
+            if( isArray( args ) ){
+                req.ARGS = args;
+            }
+            send.call(conn, JSON.stringify(req)); // Converting data to request format
+        }
+    }
+}
+
+function clientFunction(fName){
+    var reqs = this;
     return function(){   // Create function-wrapper for API calls
         var req = { CALL: fName }
             , args = []
@@ -360,7 +383,7 @@ function createWrapper(fName, sender, conn){
             }
         }
         if( isFunction( la ) ){
-            req.CB = localReqs.createCallback( la );
+            req.CB = reqs.createCallback( la );
             args = args.slice(0,-1);   // Removing callback from array
         }
         if( args.length > 0 ){
@@ -368,68 +391,178 @@ function createWrapper(fName, sender, conn){
         } else if ( req.CB === undefined ) {
             req = fName;
         }
-        localReqs.send.call(conn, JSON.stringify(req) ); // Converting data to request format
+        reqs.send.call(this, JSON.stringify(req) ); // Converting data to request format
     }
 }
 
-function reqsClient(reqs, cpi, sender){ // This function is creates local API wrappers
-    var client
-        , i = 0
-        , len
-    ;
-
-    client = function(fName, conn, args, cb){
-        var req = { CALL: fName }
-            , args = {}
-        ;
-        if( isFunction(cb) ){
-            req.CB = reqs.createCallback(cb);
-        } else if( isFunction(conn) ){
-            req.CB = reqs.createCallback(conn);
-            conn === undefined;
-        } else if( isFunction(args) ){
-            req.CB = reqs.createCallback(args);
-            args === undefined;
-        }
-        if( isArray( args ) ){
-            req.ARGS = args;
-        }
-        sender.call(conn, JSON.stringify(req)); // Converting data to request format
-    }
-
-    // cpi.push('CB');
-    len = cpi.length;
-
-    for(i; i<len; i++){
-        client[cpi[i]] = (function(fName){   // Caching function name (in other cases it will be lost)
-            return function(){   // Create function-wrapper for API calls
-                var req = { CALL: fName }
-                    , args = []
-                    , la = arguments[arguments.length-1]
-                    , i
-                ;
-                for(i in arguments){
-                    if( arguments.hasOwnProperty(i) ){
-                        args.push( arguments[i] );
-                    }
+function clientWrapper(fName, userXT){ // Caching function name (in other cases it will be lost)
+    var reqs = this;
+    return function(){
+        arguments[arguments.length++] = function(){   // Create function-wrapper for API calls
+            var req = { CALL: fName }
+                , args = []
+                , la = arguments[arguments.length-1]
+                , i
+            ;
+            for(i in arguments){
+                if( arguments.hasOwnProperty(i) ){
+                    args.push( arguments[i] );
                 }
-                if( isFunction( la ) ){
-                    req.CB = reqs.createCallback( la );
-                    args = args.slice(0,-1);   // Removing callback from array
-                }
-                if( args.length > 0 ){
-                    req.ARGS = args;
-                } else if ( req.CB === undefined ) {
-                    req = fName;
-                }
-                // console.log( 'CPI CALL: ' + fName, arguments, args, la);
-                sender.call(this, JSON.stringify(req) ); // Converting data to request format
             }
-        })(cpi[i]);
+            if( isFunction( la ) ){
+                req.CB = reqs.createCallback( la );
+                args = args.slice(0,-1);   // Removing callback from array
+            }
+            if( args.length > 0 ){
+                req.ARGS = args;
+            } else if ( req.CB === undefined ) {
+                req = fName;
+            }
+            reqs.send.call( this, JSON.stringify(req) ); // Converting data to request format
+        };
+        userXT.apply(this, arguments);
     }
-
-    return client;
 }
+
+function clientFunctionsAdd(reqs, apiList){ // This function is creates local API wrappers
+    var i = 0
+        , len
+        , name
+        , client = reqs.client
+    ;
+    if( isArray( apiList ) ) {
+
+        // *** Array ***
+        len = apiList.length;
+        for(i; i<len; i++){
+            name = apiList[i];
+            if( client.hasOwnProperty(name) ){ continue; }
+            client[name] = clientFunction.call(reqs, name);
+        }
+
+    } else if( isObject( apiList ) ) {
+
+        // *** Object ***
+        for( name in apiList ){
+            if( apiList.hasOwnProperty(name) && client.hasOwnProperty(name) ){ continue; }
+            client[name] = clientWrapper.call(reqs, name, apiList[name]);
+        }
+
+    }
+}
+
+// function reqsClient(reqs, cpi, sender){ // This function is creates local API wrappers
+//     var client
+//         , i = 0
+//         , len
+//         , name
+//         , rClient = reqs.client
+//     ;
+
+//     client = function(fName, conn, args, cb){
+//         var req = { CALL: fName };
+//             // , args = {}
+//         if( isFunction(cb) ){
+//             req.CB = reqs.createCallback(cb);
+//         } else if( isFunction(conn) ){
+//             req.CB = reqs.createCallback(conn);
+//             conn === undefined;
+//         } else if( isFunction(args) ){
+//             req.CB = reqs.createCallback(args);
+//             args === undefined;
+//         }
+//         if( isArray( args ) ){
+//             req.ARGS = args;
+//         }
+//         sender.call(conn, JSON.stringify(req)); // Converting data to request format
+//     }
+
+//     if( isObject( cpi ) ) {
+
+//         // *** Object with callbacks ***
+//         for( name in cpi ){
+//             console.log('for o', name, reqs, rClient && rClient[name], rClient && rClient.hasOwnProperty(name))
+//             debugger;
+//             if( cpi.hasOwnProperty(name) && rClient && !rClient.hasOwnProperty(name) ){
+//                 client[name] = (function(fName, uWrap){   // Caching function name (in other cases it will be lost)
+//                     return function(){
+//                         // console.log( 'wrap', arguments);
+//                         var wrap = function(){   // Create function-wrapper for API calls
+//                             var req = { CALL: fName }
+//                                 , args = []
+//                                 , la = arguments[arguments.length-1]
+//                                 , i
+//                             ;
+//                             for(i in arguments){
+//                                 if( arguments.hasOwnProperty(i) ){
+//                                     args.push( arguments[i] );
+//                                 }
+//                             }
+//                             if( isFunction( la ) ){
+//                                 req.CB = reqs.createCallback( la );
+//                                 args = args.slice(0,-1);   // Removing callback from array
+//                             }
+//                             if( args.length > 0 ){
+//                                 req.ARGS = args;
+//                             } else if ( req.CB === undefined ) {
+//                                 req = fName;
+//                             }
+//                             // console.log( 'CPI CALL: ' + fName, arguments, args, la);
+//                             sender.call(this, JSON.stringify(req) ); // Converting data to request format
+//                         };
+//                         arguments[arguments.length++] = wrap;
+//                         console.log( 'arguments', arguments );
+//                         uWrap.apply(this, arguments);
+//                     }
+//                 })(name, cpi[name]);
+//             }
+//         }
+
+
+//     } else {
+
+//         // *** Array of strings ***
+//         len = cpi.length;
+//         for(i; i<len; i++){
+
+//             name = cpi[i]
+//             console.log('for a', name, reqs, rClient && rClient[name], rClient && rClient.hasOwnProperty(name))
+//             debugger;
+//             if( rClient && rClient.hasOwnProperty(name) ){ continue; }
+
+//             client[name] = (function(fName){   // Caching function name (in other cases it will be lost)
+//                 return function(){   // Create function-wrapper for API calls
+//                     var req = { CALL: fName }
+//                         , args = []
+//                         , la = arguments[arguments.length-1]
+//                         , i
+//                     ;
+//                     for(i in arguments){
+//                         if( arguments.hasOwnProperty(i) ){
+//                             args.push( arguments[i] );
+//                         }
+//                     }
+//                     if( isFunction( la ) ){
+//                         req.CB = reqs.createCallback( la );
+//                         args = args.slice(0,-1);   // Removing callback from array
+//                     }
+//                     if( args.length > 0 ){
+//                         req.ARGS = args;
+//                     } else if ( req.CB === undefined ) {
+//                         req = fName;
+//                     }
+//                     // console.log( 'CPI CALL: ' + fName, arguments, args, la);
+//                     sender.call(this, JSON.stringify(req) ); // Converting data to request format
+//                 }
+//             })(name);
+
+//         }
+
+
+//     }
+
+//     return client;
+// }
 
 /**
  * Create new API
@@ -439,12 +572,12 @@ function reqsClient(reqs, cpi, sender){ // This function is creates local API wr
  * Создать новое апи, возвращает объект типа reqs, который содержит все необходимые методы и свойства
  * @param {object} options — опции
  */
-function reqs(options){ // Create new interface
+function Reqs(options){ // Create new interface
     options = options || {};
     var localReqs = {
-            SPI: options.SPI || {}
+            server: options.server || {}
         }
-        , cpi = options.CPI || []
+        , client = options.client || []
     ;
 
     localReqs._id = 0; // Callback counter
@@ -471,14 +604,15 @@ function reqs(options){ // Create new interface
 
     if( isObject( options.API ) ){
         forObj(options.API, function(f, name){
-            cpi.push(name);
-            localReqs.SPI[name] = f;
+            client.push(name);
+            localReqs.server[name] = f;
         });
     }
 
     if( isFunction( options.send ) ){
-        localReqs.CPI = reqsClient(localReqs, cpi, options.send );
         localReqs.send = options.send;
+        createClient( localReqs );
+        clientFunctionsAdd( localReqs, client );
     }
 
     return localReqs;
@@ -501,15 +635,17 @@ function requestInfo(conn, methodName, cb){
 }
 
 
-function makeApi(conn, cb){
-    var lreqs = this;
+function build(conn, cb){
+    var lreqs = this
+        , newClient
+    ;
     if( isFunction( conn ) ){
         cb = conn;
         conn = undefined;
     }
 
     function createApi(methods, events){
-        lreqs.CPI = reqsClient(lreqs, methods, lreqs.send);
+        clientFunctionsAdd(lreqs, methods);
         if( isFunction( cb ) ){
             cb(methods, events);
         }
@@ -524,15 +660,16 @@ function makeApi(conn, cb){
     );
 }
 
-module.exports = reqs;
+module.exports = Reqs;
 rProto = {
     'parse': reqsParse
     , 'err404': err404
     , 'error': reqsError
     , 'info': requestInfo
-    , 'validate': reqsValidate
+    , 'validate': validate
     , 'createCallback': createCallback
     , 'createCBWrapper': createCBWrapper
-    , 'createWrapper': createWrapper
-    , 'make': makeApi
+    , 'clientFunction': clientFunction
+    , 'clientWrapper': clientWrapper
+    , 'build': build
 };
