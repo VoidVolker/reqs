@@ -106,4 +106,3 @@ To build library:
 To watch files and automatically rebuild library and restart server:
 
     npm run watch
-
