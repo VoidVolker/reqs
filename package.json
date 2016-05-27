@@ -1,6 +1,6 @@
 {
   "name": "node-reqs",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "REQuest jSon interface for WebSockets, HTTP and any other protocols",
   "main": "reqs.js",
   "scripts": {
