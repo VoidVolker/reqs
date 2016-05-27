@@ -43,7 +43,7 @@ var api = new Reqs({
 function rootHandle(str) {
     try{
         console.info('    parsing string:', str);
-        api.parse(str, this); // this - is connection onject
+        api.parse(str, this); // this - is connection object
     } catch(e){
         console.log('Reqs error: ', e);
     }
