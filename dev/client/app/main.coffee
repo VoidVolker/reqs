@@ -3,6 +3,7 @@ class Main
     ###################################################################################################
     createApi = ->
         new Reqs
+            validate: 'secret'
             send: (d) -> # Function for sending data
                 if APP.WS.readyState is 1
                     APP.WS.send d
@@ -19,6 +20,7 @@ class Main
                         console.log 'ping to server:', ping1, '/ ping from server:', ping2, '/ total:', ping1 + ping2
                         return
                     return
+
 
     ###################################################################################################
     # WebSockets

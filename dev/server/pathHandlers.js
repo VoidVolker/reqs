@@ -25,6 +25,7 @@ var api = new Reqs({
     , send: function(data){
         this.sendText(data);
     }
+    , isValid: 'secret'
 });
 
 function rootHandle(str) {

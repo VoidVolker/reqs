@@ -38,6 +38,7 @@ var api = new Reqs({
     , send: function(data){
         this.sendText(data);
     }
+    , isValid: 'secret'
 });
 
 function rootHandle(str) {
@@ -52,10 +53,29 @@ function rootHandle(str) {
 exports.root = rootHandle;
 ```
 
+Each request from client can be validated via option `isValid`.
+
+If `isValid` is string: search it in request property `validation`
+
+If `isValid` is function: execute it and check returned value. If `true` - request is valid, in other case - not valid and call function `invalid`.
+
+Example:
+
+```
+function isValid(o){
+    if( o.hasOwnProperty('validation') ){
+        return o.validation === isValid;
+    } else {
+        return false;
+    }
+};
+```
+
 And client:
 
 ```JavaScript
 var api = new new Reqs({
+    validate: 'secret', // Simple request validation via secret toket
     send: function(d) {
         if (APP.WS.readyState === 1) {
             APP.WS.send(d);
@@ -82,6 +102,22 @@ var api = new new Reqs({
         }
     }
 });
+```
+
+Each request to server can be validated via option `validate`.
+
+If `validate` is string: add property `validation` in request with this value
+
+If `validate` is function: execute it with request object and send returned value as request object.
+
+Example:
+
+```
+function validate(o){
+    o.validation = validate;
+    return o;
+};
+
 ```
 
 ## Develop

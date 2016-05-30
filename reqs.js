@@ -112,7 +112,9 @@ function isString(s){   return t.call(s) === '[object String]'; }
 function isArray(s){    return t.call(s) === '[object Array]';  }
 function isObject(s){   return t.call(s) === '[object Object]'; }
 function isFunction(s){ return t.call(s) === '[object Function]'; }
-function isNumber(s){ return s === s && (t.call(s) === '[object Number]') }
+function isNumber(s){   return s === s && (t.call(s) === '[object Number]') }
+function typeOf(s) {    return t.call(s).slice(8, -1);}
+
 function forObj(o, cb, cbThis){
     for(var key in o){
         if( o.hasOwnProperty(key) ){
@@ -155,7 +157,7 @@ function reqsParse(request, conn){ // JSON Request parser // Разбор вхо
         , result
         , arr
         , xt
-        , localReqs = this
+        , reqs = this
         , requestThis = {
             conn: conn
             , reqs: this
@@ -170,23 +172,47 @@ function reqsParse(request, conn){ // JSON Request parser // Разбор вхо
         return;
     }
 
-    if( this.validate(obj) ) { // Request validating
+    // if( this.isValid(obj) ) { // Request validating
 
-        if( isString(obj) && spi.hasOwnProperty(obj) ){ // If it is string - try to execute as function
+        // if( isString(obj) && spi.hasOwnProperty(obj) ){ // If it is string - try to execute as function
 
-            result = spi[obj].call(requestThis);
-            if( result !== undefined && result === result ){ // Second - NaN check
-                this.send.call(conn, JSON.stringify( { CALL: obj, ARGS: [result] } ) );
-            }
+        //     if( this.isValid(obj) ) { // Request validating
+        //         result = spi[obj].call(requestThis);
+        //         if( result !== undefined && result === result ){ // Second - NaN check
+        //             this.send.call(
+        //                 conn,
+        //                 JSON.stringify(
+        //                     this.validate( { CALL: obj, ARGS: [result] } )
+        //                 )
+        //             );
+        //         }
+        //     } else {
+        //         this.invalid(obj, conn);
+        //     }
+        //     return;
 
-        } else if( isObject(obj) ) { // if it is object - try to search functions and execute them...
-            arr = [ obj ]
-        } else if( !isArray(obj) ){
+        // } else if( isObject(obj) ) { // if it is object - try to search functions and execute them...
+        //     arr = [ obj ]
+        // } else if( !isArray(obj) ){
+        //     this.err404('reqs.parse() 404 unknown command: ' + obj.toString() );
+        //     return;
+        // }
+
+    switch( typeOf(obj) ){
+        case 'Object':
+            arr = [ obj ];
+            break;
+        case 'Array':
+            break;
+        default:
             this.err404('reqs.parse() 404 unknown command: ' + obj.toString() );
             return;
-        }
+    }
 
-        for(xt in arr){
+    for(xt in arr){
+
+        if( this.isValid(obj) ) { // Request validating
+
             xt = arr[xt];
             if( xt.ARGS !== undefined && !isArray(xt.ARGS) ){
                 this.err404('Wrong data type in property "ARGS". Data type is: ' + t.call(xt.ARGS) );
@@ -202,7 +228,7 @@ function reqsParse(request, conn){ // JSON Request parser // Разбор вхо
                 if ( fName !== undefined && isString(fName) && spi.hasOwnProperty(fName) ){
 
                     if( xt.CB !== undefined && isString(xt.CB) ){  // This function with callback
-                        requestThis.cb = localReqs.createCBWrapper(xt.CB, conn);
+                        requestThis.cb = this.createCBWrapper(xt.CB, conn);
                         // requestThis.cb = function(args, cb){
                         //     var resp = {
                         //         CALLBACK: xt.CB
@@ -213,14 +239,19 @@ function reqsParse(request, conn){ // JSON Request parser // Разбор вхо
                         //     if( isArray(args) ){
                         //         resp.ARGS = args
                         //     }
-                        //     localReqs.send.call(conn, JSON.stringify(resp));
+                        //     this.send.call(conn, JSON.stringify(resp));
                         // }
                     }
 
                     result = spi[fName].apply(requestThis, xt.ARGS);
 
                     if( isArray( result ) ){
-                        localReqs.send.call(conn, JSON.stringify( { CALL: fName, ARGS: result } ) );
+                        this.send.call(
+                            conn,
+                            JSON.stringify(
+                                this.validate({ CALL: fName, ARGS: result })
+                            )
+                        );
                         return;
                     }
 
@@ -236,19 +267,24 @@ function reqsParse(request, conn){ // JSON Request parser // Разбор вхо
                 if( isString( cbid ) ){
 
                     if( xt.CB !== undefined && isString( xt.CB ) ){  // This callback with callback
-                        result = localReqs.CB(
+                        result = this.CB(
                             cbid
                             , conn
                             , xt.ARGS
-                            , localReqs.createCBWrapper(xt.CB, conn)
+                            , this.createCBWrapper(xt.CB, conn)
                         );
                         if( isArray( result ) ){
-                            localReqs.send.call(conn, JSON.stringify( { CALLBACK: xt.CB, ARGS: result } ) );
+                            this.send.call(
+                                conn,
+                                JSON.stringify(
+                                    this.validate({ CALLBACK: xt.CB, ARGS: result })
+                                )
+                            );
                             return;
                         }
                         return;
                     } else {
-                        localReqs.CB(cbid, conn, xt.ARGS);
+                        this.CB(cbid, conn, xt.ARGS);
                         return;
                     }
 
@@ -260,26 +296,45 @@ function reqsParse(request, conn){ // JSON Request parser // Разбор вхо
             } else if( xt.hasOwnProperty('INFO') ){
 
                 if( xt.CB !== undefined && isString(xt.CB) ){
-                    requestThis.cb = localReqs.createCBWrapper(xt.CB, conn);
+                    requestThis.cb = this.createCBWrapper(xt.CB, conn);
                     getInfo.call(requestThis, xt.INFO);
                 }
 
             } else {
-                this.err404('Missing root property "CALL" and "CALLBACK".');
+                this.err404('Missing root property "CALL" and "CALLBACK".', conn);
                 return;
             }
 
+        } else {
+            this.invalid(obj, conn);
+            return;
         }
 
-    } else {
-        this.error('reqs.parse() Not valid object');
-        return;
     }
+
 }
 
-function validate(obj){
-    return true;
-}
+/**
+ * Request is valid?
+ * @param {object} obj — request object
+ * @return {bool} bool — result of check
+ */
+function reqsIsValid(obj){ return true; }
+
+
+/**
+ * Request validate
+ * @param {object} obj — request object
+ * @return {object} obj — validated request object
+ */
+function reqsValidate(obj){ return obj; }
+
+/**
+ * Request invalid hamdler
+ * @param {object} obj — request object
+ * @param {object} conn — connection object
+ */
+function reqsInvalid(obj, conn){}
 
 /**
  * Method for 404 error (function for this requset not found)
@@ -302,9 +357,7 @@ function reqsError(msg, conn){
     this.send(
         conn,
         JSON.stringify(
-            { ERROR:
-                { MSG: msg }
-            }
+            this.validate({ ERROR: { MSG: msg } })
         )
     );
 }
@@ -323,7 +376,7 @@ function createCallback(cb){
 }
 
 function createCBWrapper(cbid, conn ){
-    var localReqs = this;
+    var reqs = this;
     return function(){   // Create function-wrapper for API calls
         var req = { CALLBACK: cbid }
             , args = []
@@ -336,13 +389,16 @@ function createCBWrapper(cbid, conn ){
             }
         }
         if( isFunction( la ) ){
-            req.CB = localReqs.createCallback( la );
+            req.CB = reqs.createCallback( la );
             args = args.slice(0,-1);   // Removing callback from array
         }
         if( args.length > 0 ){
             req.ARGS = args;
         }
-        localReqs.send.call(conn, JSON.stringify(req) ); // Converting data to request format
+        reqs.send.call(  // Converting data to request format
+            conn,
+            JSON.stringify( reqs.validate(req) )
+        );
     }
 }
 
@@ -364,7 +420,10 @@ function createClient(reqs){
             if( isArray( args ) ){
                 req.ARGS = args;
             }
-            send.call(conn, JSON.stringify(req)); // Converting data to request format
+            send.call( // Converting data to request format
+                conn,
+                JSON.stringify( reqs.validate(req) )
+            );
         }
     }
 }
@@ -374,7 +433,7 @@ function clientFunction(fName){
     return function(){   // Create function-wrapper for API calls
         var req = { CALL: fName }
             , args = []
-            , la = arguments[arguments.length-1]
+            , cb = arguments[arguments.length-1]
             , i
         ;
         for(i in arguments){
@@ -382,16 +441,20 @@ function clientFunction(fName){
                 args.push( arguments[i] );
             }
         }
-        if( isFunction( la ) ){
-            req.CB = reqs.createCallback( la );
+        if( isFunction( cb ) ){
+            req.CB = reqs.createCallback( cb );
             args = args.slice(0,-1);   // Removing callback from array
         }
         if( args.length > 0 ){
             req.ARGS = args;
-        } else if ( req.CB === undefined ) {
-            req = fName;
         }
-        reqs.send.call(this, JSON.stringify(req) ); // Converting data to request format
+        // else if ( req.CB === undefined ) {
+        //     req = fName;
+        // }
+        reqs.send.call( // Converting data to request format
+            this,
+            JSON.stringify( reqs.validate(req) )
+        );
     }
 }
 
@@ -401,7 +464,7 @@ function clientWrapper(fName, userXT){ // Caching function name (in other cases 
         arguments[arguments.length++] = function(){   // Create function-wrapper for API calls
             var req = { CALL: fName }
                 , args = []
-                , la = arguments[arguments.length-1]
+                , cb = arguments[arguments.length-1]
                 , i
             ;
             for(i in arguments){
@@ -409,16 +472,20 @@ function clientWrapper(fName, userXT){ // Caching function name (in other cases 
                     args.push( arguments[i] );
                 }
             }
-            if( isFunction( la ) ){
-                req.CB = reqs.createCallback( la );
+            if( isFunction( cb ) ){
+                req.CB = reqs.createCallback( cb );
                 args = args.slice(0,-1);   // Removing callback from array
             }
             if( args.length > 0 ){
                 req.ARGS = args;
-            } else if ( req.CB === undefined ) {
-                req = fName;
             }
-            reqs.send.call( this, JSON.stringify(req) ); // Converting data to request format
+            // else if ( req.CB === undefined ) {
+            //     req = fName;
+            // }
+            reqs.send.call( // Converting data to request format
+                this,
+                JSON.stringify( reqs.validate(req) )
+            );
         };
         userXT.apply(this, arguments);
     }
@@ -451,126 +518,13 @@ function clientFunctionsAdd(reqs, apiList){ // This function is creates local AP
     }
 }
 
-// function reqsClient(reqs, cpi, sender){ // This function is creates local API wrappers
-//     var client
-//         , i = 0
-//         , len
-//         , name
-//         , rClient = reqs.client
-//     ;
-
-//     client = function(fName, conn, args, cb){
-//         var req = { CALL: fName };
-//             // , args = {}
-//         if( isFunction(cb) ){
-//             req.CB = reqs.createCallback(cb);
-//         } else if( isFunction(conn) ){
-//             req.CB = reqs.createCallback(conn);
-//             conn === undefined;
-//         } else if( isFunction(args) ){
-//             req.CB = reqs.createCallback(args);
-//             args === undefined;
-//         }
-//         if( isArray( args ) ){
-//             req.ARGS = args;
-//         }
-//         sender.call(conn, JSON.stringify(req)); // Converting data to request format
-//     }
-
-//     if( isObject( cpi ) ) {
-
-//         // *** Object with callbacks ***
-//         for( name in cpi ){
-//             console.log('for o', name, reqs, rClient && rClient[name], rClient && rClient.hasOwnProperty(name))
-//             debugger;
-//             if( cpi.hasOwnProperty(name) && rClient && !rClient.hasOwnProperty(name) ){
-//                 client[name] = (function(fName, uWrap){   // Caching function name (in other cases it will be lost)
-//                     return function(){
-//                         // console.log( 'wrap', arguments);
-//                         var wrap = function(){   // Create function-wrapper for API calls
-//                             var req = { CALL: fName }
-//                                 , args = []
-//                                 , la = arguments[arguments.length-1]
-//                                 , i
-//                             ;
-//                             for(i in arguments){
-//                                 if( arguments.hasOwnProperty(i) ){
-//                                     args.push( arguments[i] );
-//                                 }
-//                             }
-//                             if( isFunction( la ) ){
-//                                 req.CB = reqs.createCallback( la );
-//                                 args = args.slice(0,-1);   // Removing callback from array
-//                             }
-//                             if( args.length > 0 ){
-//                                 req.ARGS = args;
-//                             } else if ( req.CB === undefined ) {
-//                                 req = fName;
-//                             }
-//                             // console.log( 'CPI CALL: ' + fName, arguments, args, la);
-//                             sender.call(this, JSON.stringify(req) ); // Converting data to request format
-//                         };
-//                         arguments[arguments.length++] = wrap;
-//                         console.log( 'arguments', arguments );
-//                         uWrap.apply(this, arguments);
-//                     }
-//                 })(name, cpi[name]);
-//             }
-//         }
-
-
-//     } else {
-
-//         // *** Array of strings ***
-//         len = cpi.length;
-//         for(i; i<len; i++){
-
-//             name = cpi[i]
-//             console.log('for a', name, reqs, rClient && rClient[name], rClient && rClient.hasOwnProperty(name))
-//             debugger;
-//             if( rClient && rClient.hasOwnProperty(name) ){ continue; }
-
-//             client[name] = (function(fName){   // Caching function name (in other cases it will be lost)
-//                 return function(){   // Create function-wrapper for API calls
-//                     var req = { CALL: fName }
-//                         , args = []
-//                         , la = arguments[arguments.length-1]
-//                         , i
-//                     ;
-//                     for(i in arguments){
-//                         if( arguments.hasOwnProperty(i) ){
-//                             args.push( arguments[i] );
-//                         }
-//                     }
-//                     if( isFunction( la ) ){
-//                         req.CB = reqs.createCallback( la );
-//                         args = args.slice(0,-1);   // Removing callback from array
-//                     }
-//                     if( args.length > 0 ){
-//                         req.ARGS = args;
-//                     } else if ( req.CB === undefined ) {
-//                         req = fName;
-//                     }
-//                     // console.log( 'CPI CALL: ' + fName, arguments, args, la);
-//                     sender.call(this, JSON.stringify(req) ); // Converting data to request format
-//                 }
-//             })(name);
-
-//         }
-
-
-//     }
-
-//     return client;
-// }
-
-/**
- * Create new API
- * @param {object} options
- */
 /**
  * Создать новое апи, возвращает объект типа reqs, который содержит все необходимые методы и свойства
  * @param {object} options — опции
+ */
+/**
+ * Create new API
+ * @param {object} options
  */
 function Reqs(options){ // Create new interface
     options = options || {};
@@ -578,7 +532,10 @@ function Reqs(options){ // Create new interface
             server: options.server || {}
         }
         , client = options.client || []
+        , isValid = options.isValid
+        , validate = options.validate
     ;
+
 
     localReqs._id = 0; // Callback counter
     localReqs.__defineGetter__('cbid', getid);
@@ -615,9 +572,43 @@ function Reqs(options){ // Create new interface
         clientFunctionsAdd( localReqs, client );
     }
 
+    // console.log('validate', validate,  typeOf( validate ));
+    switch( typeOf( validate ) ){
+        case 'String':
+            localReqs.validate = function(o){
+                o.validation = validate;
+                return o;
+            };
+            break;
+        case 'Function':
+            localReqs.validate = validate;
+    }
+
+    // console.log('isValid', isValid,  typeOf( isValid ));
+    switch( typeOf( isValid ) ){
+        case 'String':
+            localReqs.isValid = function(o){
+                if( o.hasOwnProperty('validation') ){
+                    return o.validation === isValid;
+                } else {
+                    return false;
+                }
+            };
+            break;
+        case 'Function':
+            localReqs.isValid = isValid;
+    }
+    // console.log('localReqs', localReqs);
     return localReqs;
 }
 
+/**
+ * Get API info
+ * @param {object} conn
+ * @param {object} methodName
+ * @param {function} cb
+ * @return {Reqs} this
+ */
 function requestInfo(conn, methodName, cb){
     if( isFunction(methodName) ){
         cb = methodName;
@@ -631,10 +622,22 @@ function requestInfo(conn, methodName, cb){
         log.warn('reqs.info call without callback for data.');
         return;
     }
-    this.send.call(conn, JSON.stringify({ INFO: methodName, CB: this.createCallback(cb) }));
+    this.send.call(
+        conn,
+        JSON.stringify(
+            this.validate({ INFO: methodName, CB: this.createCallback(cb) })
+        )
+    );
+    return this
 }
 
 
+/**
+ * Build client API methods
+ * @param {object} conn
+ * @param {function} cb
+ * @return {Reqs} this
+ */
 function build(conn, cb){
     var lreqs = this
         , newClient
@@ -652,12 +655,16 @@ function build(conn, cb){
     }
 
     this.send.call(
-        conn, JSON.stringify({
-            INFO: ''
-            , CB:
-                this.createCallback( createApi )
-        })
+        conn,
+        JSON.stringify(
+            this.validate({
+                INFO: ''
+                , CB:
+                    this.createCallback( createApi )
+            })
+        )
     );
+    return this;
 }
 
 module.exports = Reqs;
@@ -666,7 +673,9 @@ rProto = {
     , 'err404': err404
     , 'error': reqsError
     , 'info': requestInfo
-    , 'validate': validate
+    , 'validate': reqsValidate
+    , 'isValid': reqsIsValid
+    , 'invalid': reqsInvalid
     , 'createCallback': createCallback
     , 'createCBWrapper': createCBWrapper
     , 'clientFunction': clientFunction

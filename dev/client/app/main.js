@@ -6,6 +6,7 @@ Main = (function() {
 
   createApi = function() {
     return new Reqs({
+      validate: 'secret',
       send: function(d) {
         if (APP.WS.readyState === 1) {
           APP.WS.send(d);
@@ -58,7 +59,7 @@ Main = (function() {
   function Main() {
     window.API = createApi();
     connect(APP);
-    console.log('Welcome to Reqs example!\nType:\n    API.client.ping()\nOr:\n    API.client.callScreen()\nThen check server console messages and Network:ws tab in browser to see details. Library in develop and this just basic example.');
+    console.log('Welcome to Reqs example! \nType: \n    API.client.ping() \nOr: \n    API.client.callScreen() \nThen check server console messages and Network:ws tab in browser to see details. Library in develop and this just basic example.');
   }
 
   $(Main);

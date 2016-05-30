@@ -1,13 +1,19 @@
 {
+    "delay": 1000,
     "sources": [
         {
             "path": "../reqs.js",
-            "command": {
-                "path": "./",
-                "name": "dist build -- ",
-                "app": "node",
-                "args": ["build.js"]
-            }
+            "command": [{
+                    "path": "./",
+                    "name": "dist build -- ",
+                    "app": "node",
+                    "args": ["build.js"]
+                }, {
+                    "path": "./server",
+                    "name": "WS server -- ",
+                    "app": "node-debug",
+                    "args": ["--no-preload", "-b=false", "--cli", "server.js"]
+            }]
         }, {
             "path": "./",
             "ext": ["coffee"],
