@@ -354,7 +354,7 @@ function err404(msg, conn){
 function reqsError(msg, conn){
     // log.warn('Error! '+msg);
     // log.warn(conn);
-    this.send(
+    this.send.call(
         conn,
         JSON.stringify(
             this.validate({ ERROR: { MSG: msg } })
