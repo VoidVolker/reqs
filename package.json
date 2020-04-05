@@ -1,6 +1,6 @@
 {
   "_from": "node-reqs",
-  "_id": "node-reqs@4.2.2",
+  "_id": "node-reqs@5.0.0",
   "_inBundle": false,
   "_integrity": "sha1-oPimFjUK+ytsegUMk1h9mjkBx2c=",
   "_location": "/node-reqs",
@@ -63,7 +63,7 @@
     "w": "./scripts/coffee.sh",
     "watch": "./scripts/coffee.sh"
   },
-  "version": "4.2.2",
+  "version": "5.0.0",
   "devDependencies": {
     "@babel/cli": "^7.7.4",
     "@babel/core": "^7.7.4",
