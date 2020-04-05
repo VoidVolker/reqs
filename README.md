@@ -10,7 +10,7 @@ Install:
 
 HTTP Server code example:
 
-```JavaScript
+```javascript
 const Reqs = require('node-reqs')
 const express = require('express')
 
@@ -84,7 +84,7 @@ srv = new Server()
 
 Http client:
 
-```JavaScript
+```javascript
 class App {
     constructor() {
         var app = this
@@ -180,7 +180,7 @@ $(function() { window.APP = new App() })
 
 WebSockets Server code example:
 
-```JavaScript
+```javascript
 const ws = require('nodejs-websocket')
 const Reqs = require('node-reqs')
 
@@ -259,7 +259,7 @@ srv = new Server()
 ```
 
 WS client example:
-```JavaScript
+```javascript
 const ws = require('nodejs-websocket')
 const Reqs = require('node-reqs')
 
@@ -423,7 +423,7 @@ Request processing:
 
 ## API instance creation
 
-```JavaScript
+```javascript
 var api = new Reqs(options)
 ```
 
@@ -460,23 +460,23 @@ Create new Reqs instance. Instance provides Reqs methods for calling user-define
 Anyway, test all variants and select most comfortable mode for your case.
 
 Default event for method in 'sync' (default) mode:
-```JavaScript
+```javascript
 events: {
     eventName: function(arg1, argN) { }
 }
 ```
 Option `events` contains functions, which will be executed, when connected client calls methods (`clientApi.methods.cbPing()`, for example). Method's arguments can be standard JS objects and callbacks. All other objects types not supported by default coder (JSON.stringify).
 For example, method call:
-```JavaScript
+```javascript
 clientApi.method('cbPing', Date.now(), function(t1, time) { })
 ```
 And event will have next arguments:
-```JavaScript
+```javascript
 cbPing: function(time, cb) { }
 ```
 
 Event for method in async mode with promise as result:
-```JavaScript
+```javascript
 events: {
     eventName: function(arg1, argN) {
         var promise = new Promise(function(resolve, reject) {
@@ -489,7 +489,7 @@ events: {
 If event returns promise - then Reqs attach handlers to `promise.then` and `promise.catch` for later data processing and sending response to connected client or server. If event throw error: Reqs will send reject type request immediatly and on other side promise will be rejected.
 
 Event for method in async mode with result and error throw:
-```JavaScript
+```javascript
 events: {
     eventName: function(arg1, argN) {
         var result = 'some result'
@@ -536,13 +536,13 @@ Method options:
 | catch | Function | Function for promise method `catch`, only for mode `async` | - |
 
 #### Array with methods names:
-```JavaScript
+```javascript
 methods: ['methodA', 'methodB']
 ```
 In this case methods arguments will be sended as is.
 
 #### Object with function:
-```JavaScript
+```javascript
 methods: {
     methodA: function(arg1, argN) {
         ... // Arguments preprocessing
@@ -557,13 +557,13 @@ methods: {
 In this case this custom functions allow to preprocess or convert data for sending. To send data function must return array with arguments.
 
 Methods call:
-```JavaScript
+```javascript
 api.methods.methodA('arg1', 'argN')
 api.methods.methodB()
 ```
 
 #### Object with method's options object:
-```JavaScript
+```javascript
 methods: {
     methodA: {
         mode: 'async',
@@ -592,7 +592,7 @@ Method can be called in 2 variants:
 1. `sync` mode. Simple call: response to call is optional. Usefull for Http api and cases, when send function can return response to call. Default mode.
 1. `async` mode. Call with ID in request: in this case method returns `Promise` object. In this case on server side event must return data or throw error. And `Promise` on client side will be completed with event data or throw error. Also, options `then` and `catch` - is same as `promise.then` and `promise.catch`.
 
-```JavaScript
+```javascript
 var promise = api.methods.methodA('arg1', 'argN')
 promise.then(function(result){ ... }).catch(function(err){ ... })
 
@@ -601,14 +601,14 @@ var syncResult = api.methods.methodB()
 
 Default mode, can be changed in runtime: `Reqs.default.mode === 'sync'`
 Mode switch in runtime:
-```JavaScript
+```javascript
 api.async = true        // mode === 'async'
 api.async = false       // mode === 'sync'
 ```
 This mode flag is affects only to methods declared whithout mode option. If method declared with mode option - flag api.async is ignored for this method.
 
 #### Array with methods options and names:
-```JavaScript
+```javascript
 methods: [
     {
         methodA: {
@@ -640,13 +640,13 @@ methods: [
 | data | String \| Buffer \| Whatever | Data for sending via WebSockets, Http or any other transport, data source is `api.coder.encode()` function |
 | return | undefined \| String \| Buffer \| Whatever | For methods in `sync` mode value, returned by send function will be returned and `api.parse` function |
 
-```JavaScript
+```javascript
 send: function(data) { app.apiPost(data) }
 ```
 Function for sending data to server or to client. Have only one argument: `data` - encoded data. Can be string, buffer or whatever. Result of `this.coder.encode` function. If function returns any result - this result can be returned from `this.parse` function.
 
 Example code from http api server:
-```JavaScript
+```javascript
 ...
 send: function(outData) { return outData }
 ...
@@ -662,14 +662,14 @@ var result = session.parse(inData)
 | return | undefined \| Whatever | For methods in `sync` mode value, returned by error function will be returned and `api.parse` function |
 
 Server code:
-```JavaScript
+```javascript
 error: function(message, code) {
     // Send error to client
     return this.sendError(message, code)
 }
 ```
 Client code:
-```JavaScript
+```javascript
 error: function(message, code) {
     console.error('API error:', message, code)
 }
@@ -685,11 +685,11 @@ Coder - class for data encodind and decoding. Coder can use additional secure op
 | arguments | Array | Arguments array for coder constructor | - |
 
 Coder options. Coder provides 2 methods: `encode` and `decode` for converting request object to data and back.
-```JavaScript
+```javascript
 coder: 'Coder'
 ```
 Coder name to use. Coders container is `Reqs.coders`.
-```JavaScript
+```javascript
 coder: {
     name: 'Coder',
     arguments: ['example key']
@@ -697,19 +697,19 @@ coder: {
 ```
 `name: 'Coder'`
 Coder name to use. Coders container is `Reqs.coders`.
-```JavaScript
+```javascript
 this.coder = Reqs.coders[options.coder.name]
 ```
 `arguments: ['example key']`
 Arguments array for coder constructor.
-```JavaScript
+```javascript
 this.coder = new Coder(...options.coder.arguments)
 ```
 Default coder have only one argument: `key`
 
 #### Custom coder
 Create coder:
-```JavaScript
+```javascript
 class MyCoder extends Reqs.Coder {
     constructor (key, arg1, argN) {
         super(key)
@@ -727,35 +727,35 @@ class MyCoder extends Reqs.Coder {
 }
 ```
 Register coder:
-```JavaScript
+```javascript
 Reqs.addModule(MyCoder)
 ```
 Use coder in options:
-```JavaScript
+```javascript
 coder: 'MyCoder'
 ```
-```JavaScript
+```javascript
 coder: {
     name: 'MyCoder',
     arguments: ['arg1', 'argN']
 }
 ```
 Or use in existing api instance immediatly whithout registration:
-```JavaScript
+```javascript
 var api = new Reqs()
 api.use(MyCoder, 'key', 'arg1', 'argN')
 ```
 Or:
-```JavaScript
+```javascript
 api.coder = new MyCoder('key', 'arg1', 'argN')
 ```
 
 ### `key`
-```JavaScript
+```javascript
 key: 'example key'
 ```
 Is equal:
-```JavaScript
+```javascript
 coder: {
     name: 'Coder',
     arguments: ['example key']
@@ -770,11 +770,11 @@ coder: {
 | arguments | Array | Arguments array for protocol constructor | - |
 
 Protocol - class for converting from raw object to structured request objects. Protocol validate data types and Protocol is container for different requests constructors. Also, Protocol allow to convert requests from different sources and APIs. Default `Reqs.Protocol` contains different requests constructors used by Reqs internally for requests processing.
-```JavaScript
+```javascript
 protocol: 'Protocol'
 ```
 Protocol name to use. Protocols container is `Reqs.protocols`.
-```JavaScript
+```javascript
 protocol: {
     name: 'Protocol',
     arguments: ['arg1', 'argN']
@@ -782,19 +782,19 @@ protocol: {
 ```
 `name: 'Protocol'`
 Protocol name to use. Protocols container is `Reqs.protocols`.
-```JavaScript
+```javascript
 this.protocol = Reqs.protocols[options.protocol.name]
 ```
 `arguments: ['arg1', 'argN']`
 Arguments array for protocol constructor.
-```JavaScript
+```javascript
 this.protocol = new Protocol(...options.protocol.arguments)
 ```
 Default protocol doesn't have any arguments.
 
 #### Custom Protocol
 Protocol template:
-```JavaScript
+```javascript
 const Model = Reqs.Protocol.Model
 // Original types used just as example
 const types = Reqs.Protocol.types
@@ -922,33 +922,33 @@ class MyProtocol extends Reqs.Protocol {
 }
 ```
 Register protocol:
-```JavaScript
+```javascript
 Reqs.addModule(MyProtocol)
 ```
 Use protocol in options:
-```JavaScript
+```javascript
 coder: 'MyProtocol'
 ```
-```JavaScript
+```javascript
 coder: {
     name: 'MyProtocol',
     arguments: ['arg1', 'argN']
 }
 ```
 Or use in existing api instance immediatly whithout registration:
-```JavaScript
+```javascript
 var api = new Reqs()
 api.use(MyProtocol, 'key', 'arg1', 'argN')
 ```
 Or:
-```JavaScript
+```javascript
 api.protocol = new MyProtocol('key', 'arg1', 'argN')
 ```
 
 #### Constructor `Protocol.Model`
 Used by `Protocol.parse` for request structure and data types validation.
 Example use:
-```JavaScript
+```javascript
 const Model = Reqs.Protocol.Model
 var models = {
     request: new Model({
@@ -963,7 +963,7 @@ var models = {
 }
 ```
 And validation in protocol's context:
-```JavaScript
+```javascript
 parse(request) {
     models.request.validate(protocol, request)
 }
@@ -1017,12 +1017,12 @@ parse(request) {
 
 Session options. Session creation: `var session = api.new()`. Usually session used for multiple connections. For example - on server side it must be used if server provide API for multiple users. On client side session isn't required.
 
-```JavaScript
+```javascript
 session: {
     arguments: 'conn'
 }
 ```
-```JavaScript
+```javascript
 session: {
     arguments: ['a', 'b', 'c']
 }
@@ -1031,12 +1031,12 @@ session: {
 #### `arguments`
 Name - for one argument or array of names for several arguments. Allow to automatically attach additional info or objects to session instance.
 `arguments: 'conn'`
-```JavaScript
+```javascript
 var session = api.new('conn')
 session.conn === 'conn'
 ```
 `arguments: ['a', 'b', 'c']`
-```JavaScript
+```javascript
 var session = api.new('a', 'b', 'c')
 session.a === 'a'
 session.b === 'b'
@@ -1049,7 +1049,7 @@ session.c === 'c'
 | return | String | New ID for callback | Required |
 
 Callbacks ID generator. By default - simple counter in `_id` property.
-```JavaScript
+```javascript
 newid: function() {
     return 'new id'
 }
@@ -1061,7 +1061,7 @@ newid: function() {
 | return | String | New ID for promise | Required |
 
 Promises ID generator. By default - simple counter in `_pid` property.
-```JavaScript
+```javascript
 newpid: function() {
     return 'new pid'
 }
@@ -1090,7 +1090,7 @@ Index:
 | return | Depends on `send` and command in request |  | - |
 
 Parse the request data. Data type is string/buffer/whatever from client/server.
-```JavaScript
+```javascript
 var result = api.parse(data)
 ```
 
@@ -1101,7 +1101,7 @@ var result = api.parse(data)
 | return | Reqs | `this` | - |
 
 Add method to `api.methods` list. Basically creates wrapper for `methodApply` with cached method name.
-```JavaScript
+```javascript
 api.addMethod('method')
 ```
 
@@ -1124,7 +1124,7 @@ Add methods to `api.methods` list.
 | safe | Boolean | Don't oeverwrite existing methods (`true` by default) | - |
 
 Create method to `api.methods` list with arguments preprocessor function and additional options. Creates wrapper for `methodApply` with cached method name and fixed mode, if `mode` argument presented.
-```JavaScript
+```javascript
 api.createMethod('method', xt, mode, xtThen, xtCatch)
 ```
 
@@ -1135,7 +1135,7 @@ api.createMethod('method', xt, mode, xtThen, xtCatch)
 | ...args | Any | Method arguments | - |
 
 Call method with arguments. Mode depends on mode flag.
-```JavaScript
+```javascript
 api.method('method', ...args)
 api.method('method', 'arg1', 'argN')
 ```
@@ -1147,7 +1147,7 @@ api.method('method', 'arg1', 'argN')
 | arguments | Array | Method arguments | - |
 
 Call method with arguments array. Mode depends on mode flag.
-```JavaScript
+```javascript
 api.methodApply('method', ['arg1', 'argN'])
 ```
 
@@ -1158,7 +1158,7 @@ api.methodApply('method', ['arg1', 'argN'])
 | ...args | Any | Method arguments | - |
 
 Call method with arguments in synchronous mode.
-```JavaScript
+```javascript
 api.methodSync('method', ...args)
 api.methodSync('method', 'arg1', 'argN')
 ```
@@ -1170,7 +1170,7 @@ api.methodSync('method', 'arg1', 'argN')
 | ...args | Any | Method arguments | - |
 
 Call method with arguments in asynchronous mode.
-```JavaScript
+```javascript
 api.methodAsync('method', ...args)
 api.methodAsync('method', 'arg1', 'argN')
 ```
@@ -1182,7 +1182,7 @@ api.methodAsync('method', 'arg1', 'argN')
 | arguments | Array | Method arguments | - |
 
 Call method with arguments array in synchronous mode.
-```JavaScript
+```javascript
 api.methodSyncApply('method', ['arg1', 'argN'])
 ```
 
@@ -1193,7 +1193,7 @@ api.methodSyncApply('method', ['arg1', 'argN'])
 | arguments | Array | Method arguments | - |
 
 Call method with arguments array in asynchronous mode.
-```JavaScript
+```javascript
 api.methodAsyncApply('method', ['arg1', 'argN'])
 ```
 
@@ -1203,7 +1203,7 @@ api.methodAsyncApply('method', ['arg1', 'argN'])
 | cb | Function | Callback | - |
 
 Request from server list of available events and methods.
-```JavaScript
+```javascript
 api.build()
 ```
 
