@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "index.js",
+  "sourceRoot": "../..",
+  "sources": [
+    "dist/node/index.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA,IAAA,KAAA,EAAA,QAAA,EAAA,IAAA,EAAA,GAAA,EAAA,CAAA,EAAA,GAAA,EAAA,OAAA,EAAA,IAAA,EAAA,IAAA;EAAA;;AAAA,IAAA,GAAO,OAAA,CAAQ,QAAR;;AACP,KAAA,GAAQ,OAAA,CAAQ,aAAR;;AACR,QAAA,GAAW,OAAA,CAAQ,gBAAR;;AAEX,OAAA,GACI;EAAA,MAAA,EAAQ,EAAR;EACA,SAAA,EAAW,CACP,cADO;AADX;;AAKJ,IAAI,CAAC,OAAL,GAAe,QAAA,CAAC,IAAD,CAAA;SAAU,IAAI,CAAC,SAAL,CAAe,OAAA,CAAQ,IAAR,CAAf;AAAV;;AAEf,KAAA,eAAA;;;EACI,KAAA,qCAAA;;IACI,IAAI,CAAC,OAAL,CAAa,CAAA,EAAA,CAAA,CAAK,IAAL,CAAA,CAAA,CAAA,CAAa,IAAb,CAAA,CAAb;EADJ;AADJ;;AAIA,MAAM,CAAC,OAAP,GAAiB",
+  "sourcesContent": [
+    "Reqs = require './reqs'\nCoder = require './lib/Coder'\nProtocol = require './lib/Protocol'\n\nmodules =\n    coders: []\n    protocols: [\n        'JRPCProtocol'\n    ]\n\nReqs.require = (path) -> Reqs.addModule require path\n\nfor own path, arr of modules\n    for name in arr\n        Reqs.require \"./#{path}/#{name}\"\n\nmodule.exports = Reqs"
+  ]
+}

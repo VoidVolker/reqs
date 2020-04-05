@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>REQS Http example</title>
+        <script type="text/javascript" src="./jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="../../../dist/web/reqs.js"></script>
+        <script type="text/javascript" src="./WS.js"></script>
+        <script type="text/javascript" src="./client.js"></script>
+        <style>
+            html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                display: flex;
+                flex-grow: 1;
+                flex-direction: column;
+            }
+
+            .user {
+                margin: 0.5em 0.5em 0 0.5em;
+                padding: 0.1em;
+                border: 1px solid #d4d4d4;
+            }
+
+            .app {
+                display: flex;
+                flex-grow: 1;
+                padding: 0.4em;
+            }
+
+            .chat-container {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+            }
+
+            .channels {
+                display: flex;
+                flex-direction: column;
+                margin: 0.1em;
+                border: 1px solid #d4d4d4;
+                cursor: default;
+            }
+
+            .channel {
+                padding: 0.4em;
+            }
+
+            .channel:hover {
+                background-color: #e0e0e0;
+            }
+
+            .messages {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                margin: 0.1em;
+                padding: 0.4em;
+                border: 1px solid #d4d4d4;
+            }
+
+            .input {
+                display: flex;
+                margin: 0.1em;
+                padding: 0.1em;
+                border: 1px solid #d4d4d4;
+            }
+
+            .input > input {
+                flex-grow: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="user">
+            Nickname: <input class="nickname" type="text" value="Me">
+            <input class="channelName" type="text" name="input" value=""> <button class="createChannel">Create channel</button>
+            Server: <select class="server">
+                <option selected value="local">Local</option>
+                <option value="ws">WebSockets</option>
+            </select>
+        </div>
+
+        <div class="app">
+            <div class="channels"></div>
+            <div class="chat-container">
+                <div class="messages"></div>
+                <div class="input">
+                    <input class="textbox" type="text">
+                    <button class="send">send</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

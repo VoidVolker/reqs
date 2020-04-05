@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "WS.js",
+  "sourceRoot": "../../..",
+  "sources": [
+    "examples/ws/client/WS.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA,IAAA;;AAAM,KAAN,MAAA,GAAA;EACI,WAAa,CAAC,OAAD,CAAA;AACjB,QAAA,QAAA,EAAA,IAAA,EAAA,IAAA,EAAA,IAAA,EAAA,MAAA,EAAA;IAAQ,MAAA,GAAS,OAAO,CAAC,MAAR,IAAkB;IAC3B,IAAA,GAAO,OAAO,CAAC,IAAR,IAAgB;IACvB,IAAA,GAAO,OAAO,CAAC,IAAR,IAAgB;IACvB,IAAA,GAAO,OAAO,CAAC,IAAR,IAAgB;IACvB,MAAA,GAAY,MAAH,GAAe,GAAf,GAAwB;IACjC,QAAA,GAAW,IAAA,GAAO,MAAP,GAAgB,KAAhB,GAAwB,IAAxB,GAA+B,GAA/B,GAAqC,IAArC,GAA4C,GAA5C,GAAkD;IAC7D,IAAA,GAAO,IAAI,SAAJ,CAAe,QAAf;IACP,IAAI,CAAC,MAAL,GAAc,OAAO,CAAC,IAAR,IAAgB;IAC9B,IAAI,CAAC,SAAL,GAAiB,OAAO,CAAC,GAAR,IAAe;IAChC,IAAI,CAAC,OAAL,GAAe,OAAO,CAAC,KAAR,IAAiB;IAChC,IAAI,CAAC,OAAL,GAAe,OAAO,CAAC,KAAR,IAAiB;AAChC,WAAO;EAZE;;AADjB",
+  "sourcesContent": [
+    "class WS\n    constructor: (options) ->\n        secure = options.secure or false\n        host = options.host or 'localhost'\n        port = options.port or 10000\n        path = options.path or ''\n        secure = if secure then 's' else ''\n        fullHost = 'ws' + secure + '://' + host + ':' + port + '/' + path\n        sock = new WebSocket( fullHost )\n        sock.onopen = options.open or noop\n        sock.onmessage = options.msg or noop\n        sock.onerror = options.error or noop\n        sock.onclose = options.close or noop\n        return sock"
+  ]
+}

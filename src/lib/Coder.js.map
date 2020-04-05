@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "Coder.js",
+  "sourceRoot": "../..",
+  "sources": [
+    "src/lib/Coder.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA,IAAA;;AAAM;EAAN,MAAA,MAAA;IAkBI,SAAW,CAAC,OAAD,CAAA;MACP,OAAO,CAAC,GAAR,GAAc,IAAC,CAAA;aACf,IAAI,CAAC,SAAL,CAAe,OAAf;IAFO;;IAIX,SAAW,CAAC,IAAD,CAAA;AACf,UAAA;MAAQ,OAAA,GAAU,IAAI,CAAC,KAAL,CAAW,IAAX;MACV,IAAG,OAAO,CAAC,GAAR,KAAiB,IAAC,CAAA,GAArB;QACI,MAAM,IAAI,KAAJ,CAAU,eAAV,EADV;;MAEA,OAAO,OAAO,CAAC;aACf;IALO;;IAOX,WAAa,CAAC,GAAD,CAAA;MACT,IAAG,GAAH;QACI,IAAC,CAAA,GAAD,GAAO;QACP,IAAC,CAAA,MAAD,GAAU,IAAC,CAAA;QACX,IAAC,CAAA,MAAD,GAAU,IAAC,CAAA,UAHf;;IADS;;EA7BjB;;EACI,KAAC,CAAA,QAAD,GAAY;;EACZ,KAAC,CAAA,MAAD,GAAU;;;;;;;kBAOV,MAAA,GAAQ,IAAI,CAAC;;;;;;;kBAOb,MAAA,GAAQ,IAAI,CAAC",
+  "sourcesContent": [
+    "class Coder\n    @category = 'coders'\n    @option = 'coder'\n\n    ###\n    Default encode function from object to data\n    @param {object} object — object with request\n    @return {string} data — output data; object, encoded to string/buffer/whatever format\n    ###\n    encode: JSON.stringify\n\n    ###\n    Default decode function from data to object\n    @param {string} data — input request in string/buffer/whatever format\n    @return {object} object — decoded object from data\n    ###\n    decode: JSON.parse\n\n    encodeKey: (request) ->\n        request.key = @key\n        JSON.stringify request\n\n    decodeKey: (data) ->\n        request = JSON.parse data\n        if request.key isnt @key\n            throw new Error \"Wrong API Key\"\n        delete request.key\n        request\n\n    constructor: (key) ->\n        if key\n            @key = key\n            @encode = @encodeKey\n            @decode = @decodeKey"
+  ]
+}

@@ -1,0 +1,2775 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body {
+  max-width: 980px;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 45px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAABE0AA8AAAAAHWwAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABWAAAADsAAABUIIslek9TLzIAAAGUAAAAQwAAAFY3d1HZY21hcAAAAdgAAACqAAACOvWLi0FjdnQgAAAChAAAABMAAAAgBtX/BGZwZ20AAAKYAAAFkAAAC3CKkZBZZ2FzcAAACCgAAAAIAAAACAAAABBnbHlmAAAIMAAABdQAAAjkYT9TNWhlYWQAAA4EAAAAMwAAADYQ6WvNaGhlYQAADjgAAAAfAAAAJAc6A1pobXR4AAAOWAAAACAAAAA0Kmz/7mxvY2EAAA54AAAAHAAAABwQPBJubWF4cAAADpQAAAAgAAAAIAEHC/NuYW1lAAAOtAAAAYQAAALxhQT4h3Bvc3QAABA4AAAAfgAAAMS3SYh9cHJlcAAAELgAAAB6AAAAhuVBK7x4nGNgZGBg4GIwYLBjYHJx8wlh4MtJLMljkGJgYYAAkDwymzEnMz2RgQPGA8qxgGkOIGaDiAIAJjsFSAB4nGNgZHZmnMDAysDAVMW0h4GBoQdCMz5gMGRkAooysDIzYAUBaa4pDA4Pwz+yMwf9z2KIYg5imAYUZgTJAQDcoQvQAHic7ZHNDYJAFIRnBXf94cDRIiyCKkCpwFCPJ092RcKNDoYKcN4+EmMPvpdvk539zQyAPYBCXEUJhBcCrJ5SQ9YLnLJe4qF5rdb+uWPDngNHTkta101pNyWa8lMhn6xx2dqUnW4q9YOIhAOOeueMSgsR/6ry+P7O5s6xVNg4chBsHUuFnWNJ8uZYwrw7chrsHXkODo7cB0dHOYCTY8kv0VE2WJKD6gOlWjsxAAB4nGNgQAMSEMgc9D8LhAESbAPdAHicrVZpd9NGFB15SZyELCULLWphxMRpsEYmbMGACUGyYyBdnK2VoIsUO+m+8Ynf4F/zZNpz6Dd+Wu8bLySQtOdwmpOjd+fN1czbZRJaktgL65GUmy/F1NYmjew8CemGTctRfCg7eyFlisnfBVEQrZbatx2HREQiULWusEQQ+x5ZmmR86FFGy7akV03KLT3pLlvjQb1V334aOsqxO6GkZjN0aD2yJVUYVaJIpj1S0qZlqPorSSu8v8LMV81QwohOImm8GcbQSN4bZ7TKaDW24yiKbLLcKFIkmuFBFHmU1RLn5IoJDMoHzZDyyqcR5cP8iKzYo5xWsEu20/y+L3mndzk/sV9vUbbkQB/Ijuzg7HQlX4RbW2HctJPtKFQRdtd3QmzZ7FT/Zo/ymkYDtysyvdCMYKl8hRArP6HM/iFZLZxP+ZJHo1qykRNB62VO7Es+gdbjiClxzRhZ0N3RCRHU/ZIzDPaYPh788d4plgsTAngcy3pHJZwIEylhczRJ2jByYCVliyqp9a6YOOV1WsRbwn7t2tGXzmjjUHdiPFsPHVs5UcnxaFKnmUyd2knNoykNopR0JnjMrwMoP6JJXm1jNYmVR9M4ZsaERCICLdxLU0EsO7GkKQTNoxm9uRumuXYtWqTJA/Xco/f05la4udNT2g70s0Z/VqdiOtgL0+lp5C/xadrlIkXp+ukZfkziQdYCMpEtNsOUgwdv/Q7Sy9eWHIXXBtju7fMrqH3WRPCkAfsb0B5P1SkJTIWYVYhWQGKta1mWydWsFqnI1HdDmla+rNMEinIcF8e+jHH9XzMzlpgSvt+J07MjLj1z7UsI0xx8m3U9mtepxXIBcWZ5TqdZlu/rNMfyA53mWZ7X6QhLW6ejLD/UaYHlRzodY3lBC5p038GQizDkAg6QMISlA0NYXoIhLBUMYbkIQ1gWYQjLJRjC8mMYwnIZhrC8rGXV1FNJ49qZWAZsQmBijh65zEXlaiq5VEK7aFRqQ54SbpVUFM+qf2WgXjzyhjmwFkiXyJpfMc6Vj0bl+NYVLW8aO1fAsepvH472OfFS1ouFPwX/1dZUJb1izcOTq/Abhp5sJ6o2qXh0TZfPVT26/l9UVFgL9BtIhVgoyrJscGcihI86nYZqoJVDzGzMPLTrdcuan8P9NzFCFlD9+DcUGgvcg05ZSVnt4KzV19uy3DuDcjgTLEkxN/P6VvgiI7PSfpFZyp6PfB5wBYxKZdhqA60VvNknMQ+Z3iTPBHFbUTZI2tjOBIkNHPOAefOdBCZh6qoN5E7hhg34BWFuwXknXKJ6oyyH7kXs8yik/Fun4kT2qGiMwLPZG2Gv70LKb3EMJDT5pX4MVBWhqRg1FdA0Um6oBl/G2bptQsYO9CMqdsOyrOLDxxb3lZJtGYR8pIjVo6Of1l6iTqrcfmYUl++dvgXBIDUxf3vfdHGQyrtayTJHbQNTtxqVU9eaQ+NVh+rmUfW94+wTOWuabronHnpf06rbwcVcLLD2bQ7SUiYX1PVhhQ2iy8WlUOplNEnvuAcYFhjQ71CKjf+r+th8nitVhdFxJN9O1LfR52AM/A/Yf0f1A9D3Y+hyDS7P95oTn2704WyZrqIX66foNzBrrblZugbc0HQD4iFHrY64yg18pwZxeqS5HOkh4GPdFeIBwCaAxeAT3bWM5lMAo/mMOT7A58xh0GQOgy3mMNhmzhrADnMY7DKHwR5zGHzBnHWAL5nDIGQOg4g5DJ4wJwB4yhwGXzGHwdfMYfANc+4DfMscBjFzGCTMYbCv6dYwzC1e0F2gtkFVoANTT1jcw+JQU2XI/o4Xhv29Qcz+wSCm/qjp9pD6Ey8M9WeDmPqLQUz9VdOdIfU3Xhjq7wYx9Q+DmPpMvxjLZQa/jHyXCgeUXWw+5++J9w/bxUC5AAEAAf//AA94nIVVX2hbZRQ/5/t7893s5ja9f7ouzdZ0TTqz3bRJmogbWya6bG6Cq0VbSV2ddIJjFtfIQHEig80Hda8yUN/0YQz8AyriiyD+xQd92R4HCnaCb3samnpumrpsCsLlfPf7zvedc37nL3CAtc/5W/wQZGA3tOBSY/g+TMjHmwzEoM1Q8+ZjRZY4oJhmBw5/YB6Za0yC5AkhlwA1A1yCBIBOwCII0Cj0U8BAMdUCzq05sKwkP7SlUY6fcJk4Fb/RyE79/6P5hjM/F4aZiXBoeMgzcqQ4Xi1hPqfDLG5FT+lchCVU3lYMyvuwhl1mqndQL0RsuloLywHtthLXI06OblTrhfWVnpSJ5+mwu/JdbtuN3IAnkW0LLMcRwaC7ktrlzridM6kVdyf9uO1UNBByI7JhwtG2sEwab07ORBeilWhqavJCqV0qzZTOl/7ZXQ5TbTcdcFelyGhhRDAQpdqp1FEX3w3cFTc1k9pJQkmm4ySCbSikxRP2QOfN+0tHS5MrpQuTU1Mk5nw0E5Xa0WvrOwDyGax9yB9ma6DAg82wHc43SAGTI4GjBWebOePAERFE8/AHaQpZASSTy8A4WwZiLQMQ82mFKATO0ILicRAoDm9p5P99E5b/fXG+kQYY3TYUuqmERWYoT0u/GNYL2q/4WB3LaVS+VynXsVYIcWw6DkCh3nX1D+VzlYN4LClF5yexSQos8exqZ3KVP+wtrC54u4Nznq6cq+xpMpUUnZ8FUYzE86ud0g28NOIv3Gj5/rmA3ABs7S/ywzFuQ4qyd6QxfNtiQIaEgp3w/entQg4Vcbqa16M5FfpeUB8t1+qeg7mI7cUyOe79wOk86gSxkVec4KPTX69++5x68Yubn5/F+w52z7u08sJX7fZXv8ekT/d2mILJxq6sn+SC6qEJknzLJCxyZEKwWVqYmAPBxBE/9DLeZiWHu7lcr/VytrCRuHojncNuTt9h46tmacmYisnSamdN2bZptcsmSysdVsy1PrOvOzF3xN64Rb937t/og9KHxYdcjIUqFAmIAHGHNzlns+RTPgeUYAQm9DwpNxfxbhhBHPaw3/gfTcXO2L+eJVIx5nsyGkvm9X4/f+bGkH45G0PaSjcMXTjcZyTvi3UdHoCDjQd3IDUVsgwYmUoJK/gp4JJxeRI0MKHZIkgynyIBqBTOUs6rOVCojvjZ4mCQz49ZMlMcp8QoYk6NoBfsxnJtsBohpa8iGJS+ZH7gU7NxME6cmF+t7cO9vB8d3jTWSct0ycW9ranXmolNDwmVkNnxe+8JtoztwS5rKJ0xWS95tQ/1zMYzg69MzUZnNtl1ofNbsml/OJm6f9wjRjpnu2o4MzHzn77IQkRd+1DjwMQ2pqSjGMMhyjrgTbBAKksuUm0iU7hI0aN2wOKOq7WYBSH0HGihj/jkiPxAfmwsEbfYrjMG+j3ij932Db/LV7I/xruNrhnroxjR9HRMb2nTvO0ZXOoHPk8H2ZhDPx93qcE/53sH5np/dkIP7zzhTVKdR/BAY/9ElkkR+A6lJGsqpJ4oQcTxpvBT3Kn58VkaJjgHyPEIws57xkaHh9KuVpDEpJZeMbZ5w/zBHi5NMQ4r5VphsFqID7TyB9eR4pX216c3AHxpdAwoqU9qg0ZJ6yVLKmMSz1iG2z27ifx18NkY0LPx1W/wCc2l5LrznrIsiKsqbmB78A9wIGx4tI8rjihVHJyY9pgMirenVq0yWg7Iw7eogG7ZgYM3qR9959A/fZkg6MnD/exlkmc+jWV4SB15XUR+eqC6l6ZmgPtN9z5JMfik05OV8ljylunJ4J+wA/FUaQSSKotsYsCWqaPBidBLcxkWx7XKFRIb45TGaEhjlF9uUVPqXOtcIwsXbBvfoZXIyRYFdkfnqjExH98xpnPczqzjX/uNdO1Y17Wpi5+6Ts8BXtjVFasp9KZ1mOiNbH65c5w6HgmyF2jFCZywM8mWjRc7T5Pmt0lRy7Y71+jYbpGyvwG4sH0XeJxjYGRgYADiwBB/53h+m68M3MwvgCIM1z5N/g6j///9v5H5BbMnkMvBwAQSBQCIcA9gAHicY2BkYGAO+p8FJF/8//v/F/MLBqAICuAFALYQB5kAeJxjfsHAwLwAiCNB+P9fbJjJmoGBMRUo/wKCAfO2EnQAAAAAANoBXgGcAgICVALaA1IDvAPkBAYEPARyAAEAAAANAF0ABAAAAAAAAgAUACQAcwAAAG4LcAAAAAB4nHWRzWrCQBSFT+pPqUIXLXTTzayKUohGKIibCoLuhbrrYtTRxCYZmYyKyz5Fd32HvlDfoO/QkziIFJtw9bvnnpl7ZwLgBt/wcHieGAf2UGd24Atcou+4RH3kuEweO66QXx1XyaHjGh6ROa7jFp/cwStfMVvhy7GHO+/e8QWuvcBxifqz4zL5xXGF/Oa4Sn53XMPE+3Bcx4P3M9DrvYmWoRWNQVN02kFXTPdCU4pSGQu5saE2meiLhU6timPtz3SSs9ypTCdqrJabWJoT5QQnymSRTkXgt0/UkUqVkVbN807ZdtmxdiEWRidi6HqItdErNbN+aO2612qd9sYAGmvsYRBhyUu0EGhQbfK/gzYCdElTOgSdB1eEFBIxFYkNV4RFJWPeZyyYpVQVHTHZx4y/yVGX2LGWFZri51TccUOn5B7nPefVCSPvGhVVwUl9znveO2KkhV8Wk82PZ8qwZf8OVcu1+fSmWCMw/HMOwXvKaysqM+p+cVuWag8tvv+c+xdd+4+teJxtjUEOwiAURJla24KliQfhUA2g/Sl+CKXx+loNrpzVezOLEY34Ron/0WhwQoszOvQYIKFwwQiNSbSBeO2SZ0tBP4j3zVjKNng32ZmtD1VVXCuOiw/pJ8S3WOU6l+K5UOTaDC4+2TjKMtN9KQf1ezLx/Sg/00FCvABHhjDjAAB4nGPw3sFwIihiIyNjX+QGxp0cDBwMyQUbGVidNjEwMmiBGJu5mBg5ICw+BjCLzWkX0wGgNCeQze60i8EBwmZmcNmowtgRGLHBoSNiI3OKy0Y1EG8XRwMDI4tDR3JIBEhJJBBs5mFi5NHawfi/dQNL70YmBhcADHYj9AAA) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headerlink {
+  font: normal 400 16px fontawesome-mini;
+  vertical-align: middle;
+  margin-left: -16px;
+  float: left;
+  display: inline-block;
+  text-decoration: none;
+  opacity: 0;
+  color: #333;
+}
+
+.markdown-body .headerlink:focus {
+  outline: none;
+}
+
+.markdown-body h1 .headerlink {
+  margin-top: 0.8rem;
+}
+
+.markdown-body h2 .headerlink,
+.markdown-body h3 .headerlink {
+  margin-top: 0.6rem;
+}
+
+.markdown-body h4 .headerlink {
+  margin-top: 0.2rem;
+}
+
+.markdown-body h5 .headerlink,
+.markdown-body h6 .headerlink {
+  margin-top: 0;
+}
+
+.markdown-body .headerlink:hover,
+.markdown-body h1:hover .headerlink,
+.markdown-body h2:hover .headerlink,
+.markdown-body h3:hover .headerlink,
+.markdown-body h4:hover .headerlink,
+.markdown-body h5:hover .headerlink,
+.markdown-body h6:hover .headerlink {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* MultiMarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px fontawesome-mini;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\e157';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><style>/*GitHub*/
+.codehilite {background-color:#fff;color:#333333;}
+.codehilite .hll {background-color:#ffffcc;}
+.codehilite .c{color:#999988;font-style:italic}
+.codehilite .err{color:#a61717;background-color:#e3d2d2}
+.codehilite .k{font-weight:bold}
+.codehilite .o{font-weight:bold}
+.codehilite .cm{color:#999988;font-style:italic}
+.codehilite .cp{color:#999999;font-weight:bold}
+.codehilite .c1{color:#999988;font-style:italic}
+.codehilite .cs{color:#999999;font-weight:bold;font-style:italic}
+.codehilite .gd{color:#000000;background-color:#ffdddd}
+.codehilite .ge{font-style:italic}
+.codehilite .gr{color:#aa0000}
+.codehilite .gh{color:#999999}
+.codehilite .gi{color:#000000;background-color:#ddffdd}
+.codehilite .go{color:#888888}
+.codehilite .gp{color:#555555}
+.codehilite .gs{font-weight:bold}
+.codehilite .gu{color:#800080;font-weight:bold}
+.codehilite .gt{color:#aa0000}
+.codehilite .kc{font-weight:bold}
+.codehilite .kd{font-weight:bold}
+.codehilite .kn{font-weight:bold}
+.codehilite .kp{font-weight:bold}
+.codehilite .kr{font-weight:bold}
+.codehilite .kt{color:#445588;font-weight:bold}
+.codehilite .m{color:#009999}
+.codehilite .s{color:#dd1144}
+.codehilite .n{color:#333333}
+.codehilite .na{color:teal}
+.codehilite .nb{color:#0086b3}
+.codehilite .nc{color:#445588;font-weight:bold}
+.codehilite .no{color:teal}
+.codehilite .ni{color:purple}
+.codehilite .ne{color:#990000;font-weight:bold}
+.codehilite .nf{color:#990000;font-weight:bold}
+.codehilite .nn{color:#555555}
+.codehilite .nt{color:navy}
+.codehilite .nv{color:teal}
+.codehilite .ow{font-weight:bold}
+.codehilite .w{color:#bbbbbb}
+.codehilite .mf{color:#009999}
+.codehilite .mh{color:#009999}
+.codehilite .mi{color:#009999}
+.codehilite .mo{color:#009999}
+.codehilite .sb{color:#dd1144}
+.codehilite .sc{color:#dd1144}
+.codehilite .sd{color:#dd1144}
+.codehilite .s2{color:#dd1144}
+.codehilite .se{color:#dd1144}
+.codehilite .sh{color:#dd1144}
+.codehilite .si{color:#dd1144}
+.codehilite .sx{color:#dd1144}
+.codehilite .sr{color:#009926}
+.codehilite .s1{color:#dd1144}
+.codehilite .ss{color:#990073}
+.codehilite .bp{color:#999999}
+.codehilite .vc{color:teal}
+.codehilite .vg{color:teal}
+.codehilite .vi{color:teal}
+.codehilite .il{color:#009999}
+.codehilite .gc{color:#999;background-color:#EAF2F5}
+</style><title>README</title></head><body><article class="markdown-body"><p><a href="https://gitter.im/VoidVolker/reqs?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img alt="Join the chat at https://gitter.im/VoidVolker/reqs" src="https://badges.gitter.im/VoidVolker/reqs.svg" /></a></p>
+<h1 id="reqs">Reqs<a class="headerlink" href="#reqs" title="Permanent link"></a></h1>
+<p>JSON interface library for HTTP, Web Sockets, Sockets and any other interfaces.</p>
+<p>Install:</p>
+<div class="codehilite"><pre>npm i node-reqs
+</pre></div>
+
+
+<p>HTTP Server code example:</p>
+<div class="codehilite"><pre><span class="kr">const</span> <span class="nx">Reqs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;node-reqs&#39;</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
+
+<span class="kr">const</span> <span class="nx">httpPort</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="kr">const</span> <span class="nx">host</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+
+<span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reqs</span><span class="p">({</span>
+    <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">cbPing</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+            <span class="c1">// throw new Error &#39;cbPing example error&#39;</span>
+            <span class="k">return</span> <span class="nx">cb</span><span class="p">(</span><span class="nx">now</span> <span class="o">-</span> <span class="nx">time</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="nx">syncPing</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+            <span class="c1">// throw new Error &#39;syncPing example error&#39;</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">methods</span><span class="p">.</span><span class="nx">pong</span><span class="p">(</span><span class="nx">now</span> <span class="o">-</span> <span class="nx">time</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="nx">asyncPing</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+            <span class="c1">// throw new Error &#39;asyncPing example error&#39;</span>
+            <span class="k">return</span> <span class="p">[</span><span class="nx">now</span> <span class="o">-</span> <span class="nx">time</span><span class="p">,</span> <span class="nx">now</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;pong&#39;</span><span class="p">],</span>
+    <span class="c1">// send function is used for sending compiled and encoded requests to client</span>
+    <span class="nx">send</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">data</span> <span class="p">},</span>
+    <span class="c1">// error function is for processing error</span>
+    <span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Send error to client</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">sendError</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="c1">// Session creation options</span>
+    <span class="nx">session</span><span class="o">:</span> <span class="p">{</span>
+        <span class="c1">// Arguments for sessions constructor:</span>
+        <span class="c1">//      arguments: [&#39;arg1&#39;, &#39;arg2&#39;]</span>
+        <span class="c1">// -&gt;</span>
+        <span class="c1">//      var session = api.new(&#39;arg1&#39;, &#39;arg2&#39;)   // Create new session. Session is linked to &#39;api&#39; object and can use all methods available in &#39;api&#39; object.</span>
+        <span class="c1">//      session.arg1 === &#39;arg1&#39;</span>
+        <span class="c1">//      session.arg2 === &#39;arg2&#39;</span>
+        <span class="nx">arguments</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;res&#39;</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="c1">// Short key option for default coder:</span>
+    <span class="nx">key</span><span class="o">:</span> <span class="s1">&#39;example key&#39;</span>
+<span class="p">})</span>
+
+<span class="kr">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/api&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="nx">req</span><span class="p">.</span><span class="nx">setEncoding</span><span class="p">(</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+    <span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">chunk</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">data</span> <span class="o">+=</span> <span class="nx">chunk</span> <span class="p">})</span>
+    <span class="nx">req</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&lt;== Incoming request:&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+        <span class="kd">var</span> <span class="nx">session</span> <span class="o">=</span> <span class="nx">srv</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="k">new</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
+        <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">session</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">result</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+        <span class="p">}</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;==&gt; Sending response:&#39;</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">httpPort</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Example Http server listening on port:&#39;</span><span class="p">,</span> <span class="nx">httpPort</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="nx">srv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Server</span><span class="p">()</span>
+</pre></div>
+
+<p>Http client:</p>
+<div class="codehilite"><pre><span class="kr">class</span> <span class="nx">App</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="k">this</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">httpApiUrl</span> <span class="o">=</span> <span class="s1">&#39;/api&#39;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reqs</span><span class="p">({</span>
+            <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">pong</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">t1</span><span class="p">,</span> <span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="kd">var</span> <span class="nx">t2</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">time</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">Event</span><span class="o">:</span> <span class="s1">&#39;Pong&#39;</span><span class="p">.</span> <span class="nx">ping</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t1</span><span class="p">}</span> <span class="o">+</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t2</span><span class="p">}</span> <span class="o">=</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t1</span> <span class="o">+</span> <span class="nx">t2</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nx">cbPing</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="p">[</span>
+                            <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+                            <span class="kd">function</span><span class="p">(</span><span class="nx">t1</span><span class="p">,</span> <span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="kd">var</span> <span class="nx">t2</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">time</span>
+                                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">Ping</span> <span class="kd">with</span> <span class="nx">callback</span> <span class="nx">result</span><span class="o">:</span> <span class="nx">ping</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t1</span><span class="p">}</span> <span class="o">+</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t2</span><span class="p">}</span> <span class="o">=</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t1</span> <span class="o">+</span> <span class="nx">t2</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+                            <span class="p">}</span>
+                        <span class="p">]</span>
+                    <span class="p">},</span>
+                    <span class="nx">syncPing</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="p">[</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()]</span> <span class="c1">// Return array with arguments for method. Method result of &#39;send&#39; function or undefined.</span>
+                    <span class="p">},</span>
+                    <span class="nx">asyncPing</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;async&#39;</span><span class="p">,</span>
+                        <span class="nx">method</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                            <span class="k">return</span> <span class="p">[</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()]</span> <span class="c1">// Return array with arguments for method. Method returns promise.</span>
+                        <span class="p">},</span>
+                        <span class="c1">// Optional function for promise.then() method</span>
+                        <span class="nx">then</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="kd">var</span> <span class="nx">t1</span> <span class="o">=</span> <span class="nx">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                            <span class="kd">var</span> <span class="nx">time</span> <span class="o">=</span> <span class="nx">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                            <span class="kd">var</span> <span class="nx">t2</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">time</span>
+                            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">asyncPing</span> <span class="nx">result</span><span class="o">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t1</span><span class="p">}</span> <span class="o">+</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t2</span><span class="p">}</span> <span class="o">=</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t1</span> <span class="o">+</span> <span class="nx">t2</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+                        <span class="p">},</span>
+                        <span class="c1">// Optional function for promise.catch() method</span>
+                        <span class="k">catch</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;asyncPing error:&#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+                        <span class="p">}</span>
+                    <span class="p">},</span>
+                    <span class="nx">history</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="p">[</span>
+                            <span class="kd">function</span><span class="p">(</span><span class="nx">channels</span><span class="p">)</span> <span class="p">{</span>
+                                <span class="nx">app</span><span class="p">.</span><span class="nx">setHistory</span><span class="p">(</span><span class="nx">channels</span><span class="p">)</span>
+                            <span class="p">}</span>
+                        <span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nx">send</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Function for sending data</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;==&gt; Request:&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+                <span class="nx">app</span><span class="p">.</span><span class="nx">apiPost</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+            <span class="p">},</span>
+            <span class="nx">key</span><span class="o">:</span> <span class="s1">&#39;example key&#39;</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+    <span class="nx">apiPost</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="nx">url</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">httpApiUrl</span><span class="p">,</span>
+            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+            <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span>
+            <span class="nx">contentType</span><span class="o">:</span> <span class="s1">&#39;application/json; charset=utf-8&#39;</span><span class="p">,</span>
+            <span class="nx">dataType</span><span class="o">:</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span>
+            <span class="nx">success</span><span class="o">:</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&lt;== Response:&#39;</span><span class="p">,</span> <span class="nx">result</span><span class="p">)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Post response is undefined&#39;</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+    <span class="nx">asyncPing</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">APP</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">methods</span><span class="p">.</span><span class="nx">asyncPing</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">t1</span> <span class="o">=</span> <span class="nx">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="kd">var</span> <span class="nx">time</span> <span class="o">=</span> <span class="nx">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="kd">var</span> <span class="nx">t2</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">time</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">asyncPing</span> <span class="nx">result</span><span class="o">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t1</span><span class="p">}</span> <span class="o">+</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t2</span><span class="p">}</span> <span class="o">=</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t1</span> <span class="o">+</span> <span class="nx">t2</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+        <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;asyncPing error:&#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nb">window</span><span class="p">.</span><span class="nx">APP</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">App</span><span class="p">()</span> <span class="p">})</span>
+</pre></div>
+
+<p>WebSockets Server code example:</p>
+<div class="codehilite"><pre><span class="kr">const</span> <span class="nx">ws</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;nodejs-websocket&#39;</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">Reqs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;node-reqs&#39;</span><span class="p">)</span>
+
+<span class="kr">const</span> <span class="nx">wsPort</span> <span class="o">=</span> <span class="mi">3001</span>
+<span class="kr">const</span> <span class="nx">host</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+
+<span class="nx">Server</span> <span class="o">=</span> <span class="kr">class</span> <span class="nx">Server</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">send</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">srv</span> <span class="o">=</span> <span class="k">this</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reqs</span><span class="p">({</span>
+            <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">cbPing</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="kd">var</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+                    <span class="c1">// throw new Error &#39;cbPing example error&#39;</span>
+                    <span class="nx">cb</span><span class="p">(</span><span class="nx">now</span> <span class="o">-</span> <span class="nx">time</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span>
+                <span class="p">},</span>
+                <span class="nx">syncPing</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="kd">var</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+                    <span class="c1">// throw new Error &#39;syncPing example error&#39;</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">methods</span><span class="p">.</span><span class="nx">pong</span><span class="p">(</span><span class="nx">now</span> <span class="o">-</span> <span class="nx">time</span><span class="p">,</span> <span class="nx">now</span><span class="p">)</span>
+                <span class="p">},</span>
+                <span class="nx">asyncPing</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="kd">var</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+                    <span class="c1">// throw new Error &#39;asyncPing example error&#39;</span>
+                    <span class="k">return</span> <span class="p">[</span><span class="nx">now</span> <span class="o">-</span> <span class="nx">time</span><span class="p">,</span> <span class="nx">now</span><span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;pong&#39;</span><span class="p">],</span>
+            <span class="nx">send</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">conn</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">conn</span><span class="p">.</span><span class="nx">OPEN</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Check connection state</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;==&gt; Sending response:&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nx">conn</span><span class="p">.</span><span class="nx">sendText</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">session</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">arguments</span><span class="o">:</span> <span class="s1">&#39;conn&#39;</span>
+            <span class="p">},</span>
+            <span class="nx">key</span><span class="o">:</span> <span class="s1">&#39;example key&#39;</span><span class="p">,</span>
+        <span class="p">})</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">wss</span> <span class="o">=</span> <span class="nx">ws</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;--- New connection! conn.path: &#39;</span> <span class="o">+</span> <span class="nx">conn</span><span class="p">.</span><span class="nx">path</span><span class="p">)</span>
+            <span class="c1">// Create new Reqs session with reference to WS connection</span>
+            <span class="nx">conn</span><span class="p">.</span><span class="nx">session</span> <span class="o">=</span> <span class="nx">srv</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="k">new</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
+            <span class="c1">// Connection closing log</span>
+            <span class="nx">conn</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">code</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;--- Connection closed&#39;</span><span class="p">,</span> <span class="nx">code</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span>
+                <span class="k">delete</span> <span class="nx">conn</span><span class="p">.</span><span class="nx">session</span>
+            <span class="p">})</span>
+
+            <span class="c1">// Conection errors handling (necessarily!)</span>
+            <span class="nx">conn</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// This error happens when connections lost</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">code</span> <span class="o">===</span> <span class="s1">&#39;ECONNRESET&#39;</span><span class="p">)</span> <span class="p">{</span>
+
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="c1">// console.error(&#39;--- Connection close error ECONNRESET&#39;)</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;--- Connection error: &#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">})</span>
+
+            <span class="c1">// WS messages processing</span>
+            <span class="nx">conn</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&lt;== Incoming request:&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span>
+            <span class="p">})</span>
+        <span class="p">})</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">wss</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">wsPort</span><span class="p">,</span> <span class="nx">host</span><span class="p">)</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Example WS Server listening on port:&#39;</span><span class="p">,</span> <span class="nx">wsPort</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="nx">srv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Server</span><span class="p">()</span>
+</pre></div>
+
+<p>WS client example:
+<div class="codehilite"><pre><span class="kr">const</span> <span class="nx">ws</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;nodejs-websocket&#39;</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">Reqs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;node-reqs&#39;</span><span class="p">)</span>
+
+<span class="kr">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3001</span>
+<span class="kr">const</span> <span class="nx">host</span> <span class="o">=</span> <span class="s1">&#39;localhost&#39;</span>
+<span class="kr">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="err">`</span><span class="nx">ws</span><span class="o">:</span><span class="c1">//${host}:${port}`</span>
+
+<span class="kd">var</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reqs</span><span class="p">({</span>
+    <span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">pong</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">t1</span><span class="p">,</span> <span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">t2</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">time</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">Event</span><span class="o">:</span> <span class="s1">&#39;Pong&#39;</span><span class="p">.</span> <span class="nx">Ping</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t1</span><span class="p">}</span> <span class="o">+</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t2</span><span class="p">}</span> <span class="o">=</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t1</span> <span class="o">+</span> <span class="nx">t2</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="nx">message</span><span class="o">:</span> <span class="p">(</span><span class="nx">channel</span><span class="p">,</span> <span class="nx">author</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="c1">// console.log &quot;New message: &lt;##{channel} [#{author}]: #{msg}&gt;&quot;</span>
+            <span class="nx">app</span><span class="p">.</span><span class="nx">message</span><span class="p">(</span><span class="nx">channel</span><span class="p">,</span> <span class="nx">author</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span>
+        <span class="p">},</span>
+        <span class="nx">channelCreated</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">channel</span><span class="p">,</span> <span class="nx">history</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">app</span><span class="p">.</span><span class="nx">addChannel</span><span class="p">(</span><span class="nx">channel</span><span class="p">,</span> <span class="nx">history</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">methods</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nx">cbPing</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span>
+                    <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span>
+                    <span class="kd">function</span><span class="p">(</span><span class="nx">t1</span><span class="p">,</span> <span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="kd">var</span> <span class="nx">t2</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">time</span>
+                        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">Ping</span> <span class="kd">with</span> <span class="nx">callback</span> <span class="nx">result</span><span class="o">:</span> <span class="nx">ping</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t1</span><span class="p">}</span> <span class="o">+</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t2</span><span class="p">}</span> <span class="o">=</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t1</span> <span class="o">+</span> <span class="nx">t2</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+                    <span class="p">}</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nx">syncPing</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">method</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="p">[</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()]</span> <span class="c1">// Return array with arguments for method. Method returns result of &#39;send&#39; function</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">asyncPing</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;async&#39;</span><span class="p">,</span>
+                <span class="nx">method</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="p">[</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()]</span> <span class="c1">// Return array with arguments for method. Returns promise.</span>
+                <span class="p">},</span>
+                <span class="c1">// Optional function for promise.then() method</span>
+                <span class="nx">then</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="kd">var</span> <span class="nx">t1</span> <span class="o">=</span> <span class="nx">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="kd">var</span> <span class="nx">time</span> <span class="o">=</span> <span class="nx">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="kd">var</span> <span class="nx">t2</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">time</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="nx">asyncPing</span> <span class="nx">result</span><span class="o">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t1</span><span class="p">}</span> <span class="o">+</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t2</span><span class="p">}</span> <span class="o">=</span> <span class="nx">$</span><span class="p">{</span><span class="nx">t1</span> <span class="o">+</span> <span class="nx">t2</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+                <span class="p">},</span>
+                <span class="c1">// Optional function for promise.catch() method</span>
+                <span class="k">catch</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;asyncPing error:&#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="nx">history</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">[</span>
+                    <span class="kd">function</span><span class="p">(</span><span class="nx">channels</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">app</span><span class="p">.</span><span class="nx">setHistory</span><span class="p">(</span><span class="nx">channels</span><span class="p">)</span>
+                    <span class="p">}</span>
+                <span class="p">];</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;message&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;createChannel&#39;</span>
+    <span class="p">],</span>
+    <span class="nx">send</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Function for sending data</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;==&gt; SEND:&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">conn</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">conn</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">conn</span><span class="p">.</span><span class="nx">sendText</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">session</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">arguments</span><span class="o">:</span> <span class="s1">&#39;conn&#39;</span>
+    <span class="p">},</span>
+    <span class="nx">key</span><span class="o">:</span> <span class="s1">&#39;example key&#39;</span><span class="p">,</span>
+    <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;sync&#39;</span> <span class="c1">// Methods call mode for all methods whithout async/sync flag</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">wsc</span> <span class="o">=</span> <span class="nx">ws</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="err">`</span><span class="o">---</span> <span class="nx">Connected</span> <span class="nx">to</span> <span class="o">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">url</span><span class="p">}</span> <span class="o">---</span><span class="err">`</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">conn</span> <span class="o">=</span> <span class="k">this</span>
+    <span class="c1">// Create new Reqs session</span>
+    <span class="nx">conn</span><span class="p">.</span><span class="nx">session</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="k">new</span><span class="p">(</span><span class="nx">conn</span><span class="p">)</span>
+    <span class="c1">// Connection closing log</span>
+    <span class="nx">conn</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;close&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">code</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;--- Connection closed&#39;</span><span class="p">,</span> <span class="nx">code</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span>
+        <span class="k">delete</span> <span class="nx">conn</span><span class="p">.</span><span class="nx">session</span>
+    <span class="p">});</span>
+    <span class="c1">// Conection errors handling (necessarily!)</span>
+    <span class="nx">conn</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// This error happens when connections lost</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">code</span> <span class="o">===</span> <span class="s1">&#39;ECONNRESET&#39;</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// console.error(&#39;--- Connection close error ECONNRESET&#39;);</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;--- Connection error: &#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="c1">// WS messages processing</span>
+    <span class="nx">conn</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;&lt;== Incoming request:&#39;</span><span class="p">,</span> <span class="nx">text</span><span class="p">)</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">text</span><span class="p">)</span>
+    <span class="p">});</span>
+
+    <span class="nx">conn</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">methods</span><span class="p">.</span><span class="nx">cbPing</span><span class="p">()</span>
+    <span class="nx">conn</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">methods</span><span class="p">.</span><span class="nx">syncPing</span><span class="p">()</span>
+    <span class="nx">conn</span><span class="p">.</span><span class="nx">session</span><span class="p">.</span><span class="nx">methods</span><span class="p">.</span><span class="nx">asyncPing</span><span class="p">()</span>
+<span class="p">});</span>
+</pre></div></p>
+<p>Full examples can be found in <code>examples</code> dir.</p>
+<hr />
+<h1 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link"></a></h1>
+<h2 id="base-logic">Base logic<a class="headerlink" href="#base-logic" title="Permanent link"></a></h2>
+<p><code>this</code> - is Reqs instance.</p>
+<p>Method call:</p>
+<div class="codehilite"><pre>this.method(&#39;method_name&#39;)
+|
+V
+request = new this.protocol.Method(&#39;method_name&#39;, &#39;id&#39;, args_array, cbs_array)
+|
+V
+data = this.coder.encode(request)
+|
+V
+this.send(data)
+</pre></div>
+
+
+<p>Next - transport level (WebSockets, Http or whatever).
+Request processing:</p>
+<div class="codehilite"><pre>request = this.coder.decode(data)
+|
+V
+parsed = this.protocol.parse(request)
+|
+V
+this.processRequest(parsed)
+|
+V
+(a) &#39;method&#39;    this.events[&#39;method_name&#39;].apply(this, args_array)
+(b) &#39;callback&#39;  this.callbacks[&#39;id&#39;].apply(this, args_array)
+(c) &#39;resolve&#39;   this.promises[id].resolve.call(this, args_array)
+(d) &#39;reject&#39;    this.promises[id].reject.call(this, args_array)
+(e) &#39;info&#39;      this.request new protocol.Callback(id, [this_events_info, this_methods_info])
+(f) &#39;error&#39;     this.error(&#39;message&#39;, code, request_id)
+</pre></div>
+
+
+<h2 id="examples-run">Examples run<a class="headerlink" href="#examples-run" title="Permanent link"></a></h2>
+<div class="codehilite"><pre>npm i node-reqs --save-dev
+cd ./node_modules/node-reqs/
+
+node --inspect ./examples/ws/server/server.js
+node --inspect ./examples/ws/node-client/client.js
+node --inspect ./examples/http/server/server.js
+</pre></div>
+
+
+<h2 id="api-instance-creation">API instance creation<a class="headerlink" href="#api-instance-creation" title="Permanent link"></a></h2>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reqs</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+</pre></div>
+
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>options</td>
+<td>Object</td>
+<td>API options with handlers</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Create new Reqs instance. Instance provides Reqs methods for calling user-defined API methods and processing API events.</p>
+<h2 id="options">Options<a class="headerlink" href="#options" title="Permanent link"></a></h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#events">events</a></td>
+<td>Object</td>
+<td>Functions - event handlers</td>
+</tr>
+<tr>
+<td><a href="#methods">methods</a></td>
+<td>Object -&gt; Function | Object<br>Array -&gt; String<br>Array -&gt; Object | String</td>
+<td>Functions - arguments preprocessing<br> Object - methods options<br>String - methods names</td>
+</tr>
+<tr>
+<td><a href="#send">send</a></td>
+<td>Function</td>
+<td>Function for sending raw data</td>
+</tr>
+<tr>
+<td><a href="#error">error</a></td>
+<td>Function</td>
+<td>Function for errors processing in events or methods functions</td>
+</tr>
+<tr>
+<td><a href="#coder">coder</a></td>
+<td>String<br>Object</td>
+<td>Coder name to use<br>Coder options</td>
+</tr>
+<tr>
+<td><a href="#key">key</a></td>
+<td>String</td>
+<td>Default coder option <code>key</code> (shortcut)</td>
+</tr>
+<tr>
+<td><a href="#protocol">protocol</a></td>
+<td>String<br>Object</td>
+<td>Protocol name to use<br>Protocol options</td>
+</tr>
+<tr>
+<td><a href="#session">session</a></td>
+<td>Object</td>
+<td>Session options</td>
+</tr>
+<tr>
+<td><a href="#newid">newid</a></td>
+<td>Function</td>
+<td>Callbacks ID generator</td>
+</tr>
+<tr>
+<td><a href="#newpid">newpid</a></td>
+<td>Function</td>
+<td>Promises ID generator</td>
+</tr>
+</tbody>
+</table>
+<h3 id="events"><code>events</code><a class="headerlink" href="#events" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Method mode</th>
+<th>Event handler return value type</th>
+<th>Description</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sync</code></td>
+<td>-</td>
+<td>In sync mode return value is ignored</td>
+<td>If you don&rsquo;t want to use promise or you have simple synchronous code everywhere</td>
+</tr>
+<tr>
+<td><code>async</code></td>
+<td>Any, not <code>Promise</code></td>
+<td>Synchronous code in event whithout promise</td>
+<td>When method caller want to use promise</td>
+</tr>
+<tr>
+<td><code>async</code></td>
+<td><code>Promise</code></td>
+<td>Asynchronous code in event handler or operation required some time (DB Acces, for example)</td>
+<td>Asynchronous code everywhere</td>
+</tr>
+</tbody>
+</table>
+<p>Anyway, test all variants and select most comfortable mode for your case.</p>
+<p>Default event for method in &lsquo;sync&rsquo; (default) mode:
+<div class="codehilite"><pre><span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">eventName</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">argN</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+Option <code>events</code> contains functions, which will be executed, when connected client calls methods (<code>clientApi.methods.cbPing()</code>, for example). Method&rsquo;s arguments can be standard JS objects and callbacks. All other objects types not supported by default coder (JSON.stringify).
+For example, method call:
+<div class="codehilite"><pre><span class="nx">clientApi</span><span class="p">.</span><span class="nx">method</span><span class="p">(</span><span class="s1">&#39;cbPing&#39;</span><span class="p">,</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">(),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">t1</span><span class="p">,</span> <span class="nx">time</span><span class="p">)</span> <span class="p">{</span> <span class="p">})</span>
+</pre></div>
+And event will have next arguments:
+<div class="codehilite"><pre><span class="nx">cbPing</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+</pre></div></p>
+<p>Event for method in async mode with promise as result:
+<div class="codehilite"><pre><span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">eventName</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">argN</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Promise</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="p">})</span>
+        <span class="k">return</span> <span class="nx">promise</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+If event returns promise - then Reqs attach handlers to <code>promise.then</code> and <code>promise.catch</code> for later data processing and sending response to connected client or server. If event throw error: Reqs will send reject type request immediatly and on other side promise will be rejected.</p>
+<p>Event for method in async mode with result and error throw:
+<div class="codehilite"><pre><span class="nx">events</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">eventName</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">argN</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="s1">&#39;some result&#39;</span>
+        <span class="kd">var</span> <span class="nx">someError</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">someError</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Some error&#39;</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">result</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+If event returns not promise: Reqs will send resolve type request and on other side promise will be resolved. If event throw error: Reqs will send reject type request immediatly and on other side promise will be rejected.</p>
+<p>How it works.</p>
+<p>When method is called: Reqs check each argument type and converts callback to new generated callback ID and append to request property with callbacks positions in arguments list. Then saves original callbacks into session storage (<code>_callbacks</code> property).</p>
+<p>Before event call: Reqs check each argument type and converts callback ID to locally created callback. This callbacks is function-wrappes with cached session and callback ID&rsquo;s for later sending as request.</p>
+<p>When callback is called: send callback-type request with callback ID and own arguments list.</p>
+<p>When callback request is returned to method&rsquo;s caller: Reqs finds callbacks IDs in session storage and calls with arguments from request.</p>
+<p>Reqs doesn&rsquo;t validate methods arguments type or value (for now, may be later this feature will be added).</p>
+<h3 id="methods"><code>methods</code><a class="headerlink" href="#methods" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Value type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Array</td>
+<td>String</td>
+<td>Method&rsquo;s name</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>Function</td>
+<td>Function for arguments preprocessing</td>
+</tr>
+<tr>
+<td>Array</td>
+<td>Object</td>
+<td>Method options</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>Function</td>
+<td>Function for arguments preprocessing</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>Object</td>
+<td>Method options</td>
+</tr>
+</tbody>
+</table>
+<p>This option creates local functions-wrappers for fast methods calls.</p>
+<p>Method options:</p>
+<table>
+<thead>
+<tr>
+<th>Option name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>Function</td>
+<td>Function for arguments preprocessing</td>
+<td>-</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>String -&gt; <code>sync</code> | <code>async</code></td>
+<td>Method&rsquo;s calling mode: return result of <code>send</code> function or return <code>Promise</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>then</td>
+<td>Function</td>
+<td>Function for promise method <code>then</code>, only for mode <code>async</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td>catch</td>
+<td>Function</td>
+<td>Function for promise method <code>catch</code>, only for mode <code>async</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h4 id="array-with-methods-names">Array with methods names:<a class="headerlink" href="#array-with-methods-names" title="Permanent link"></a></h4>
+<p><div class="codehilite"><pre><span class="nx">methods</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;methodA&#39;</span><span class="p">,</span> <span class="s1">&#39;methodB&#39;</span><span class="p">]</span>
+</pre></div>
+In this case methods arguments will be sended as is.</p>
+<h4 id="object-with-function">Object with function:<a class="headerlink" href="#object-with-function" title="Permanent link"></a></h4>
+<p><div class="codehilite"><pre><span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">methodA</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">argN</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">...</span> <span class="c1">// Arguments preprocessing</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;argA&#39;</span><span class="p">,</span> <span class="s1">&#39;argB&#39;</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nx">methodB</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="p">...</span> <span class="c1">// Arguments preprocessing</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;argA&#39;</span><span class="p">,</span> <span class="s1">&#39;argB&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+In this case this custom functions allow to preprocess or convert data for sending. To send data function must return array with arguments.</p>
+<p>Methods call:
+<div class="codehilite"><pre><span class="nx">api</span><span class="p">.</span><span class="nx">methods</span><span class="p">.</span><span class="nx">methodA</span><span class="p">(</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">)</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">methods</span><span class="p">.</span><span class="nx">methodB</span><span class="p">()</span>
+</pre></div></p>
+<h4 id="object-with-methods-options-object">Object with method&rsquo;s options object:<a class="headerlink" href="#object-with-methods-options-object" title="Permanent link"></a></h4>
+<p><div class="codehilite"><pre><span class="nx">methods</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">methodA</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;async&#39;</span><span class="p">,</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">argN</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">...</span> <span class="c1">// Arguments preprocessing</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;argA&#39;</span><span class="p">,</span> <span class="s1">&#39;argB&#39;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="nx">then</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">...</span>
+        <span class="p">},</span>
+        <span class="k">catch</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">...</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nx">methodB</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;sync&#39;</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">argN</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">...</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;argA&#39;</span><span class="p">,</span> <span class="s1">&#39;argB&#39;</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+Method can be called in 2 variants:</p>
+<ol>
+<li><code>sync</code> mode. Simple call: response to call is optional. Usefull for Http api and cases, when send function can return response to call. Default mode.</li>
+<li><code>async</code> mode. Call with ID in request: in this case method returns <code>Promise</code> object. In this case on server side event must return data or throw error. And <code>Promise</code> on client side will be completed with event data or throw error. Also, options <code>then</code> and <code>catch</code> - is same as <code>promise.then</code> and <code>promise.catch</code>.</li>
+</ol>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">methods</span><span class="p">.</span><span class="nx">methodA</span><span class="p">(</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">)</span>
+<span class="nx">promise</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">){</span> <span class="p">...</span> <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">){</span> <span class="p">...</span> <span class="p">})</span>
+
+<span class="kd">var</span> <span class="nx">syncResult</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">methods</span><span class="p">.</span><span class="nx">methodB</span><span class="p">()</span>
+</pre></div>
+
+<p>Default mode, can be changed in runtime: <code>Reqs.default.mode === 'sync'</code>
+Mode switch in runtime:
+<div class="codehilite"><pre><span class="nx">api</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">true</span>        <span class="c1">// mode === &#39;async&#39;</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">async</span> <span class="o">=</span> <span class="kc">false</span>       <span class="c1">// mode === &#39;sync&#39;</span>
+</pre></div>
+This mode flag is affects only to methods declared whithout mode option. If method declared with mode option - flag api.async is ignored for this method.</p>
+<h4 id="array-with-methods-options-and-names">Array with methods options and names:<a class="headerlink" href="#array-with-methods-options-and-names" title="Permanent link"></a></h4>
+<div class="codehilite"><pre><span class="nx">methods</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">methodA</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">mode</span><span class="o">:</span> <span class="s1">&#39;async&#39;</span><span class="p">,</span>
+            <span class="nx">method</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">argN</span><span class="p">)</span> <span class="p">{</span>
+                <span class="p">...</span> <span class="c1">// Arguments preprocessing</span>
+                <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;argA&#39;</span><span class="p">,</span> <span class="s1">&#39;argB&#39;</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="nx">then</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+                <span class="p">...</span>
+            <span class="p">},</span>
+            <span class="k">catch</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+                <span class="p">...</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">methodB</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">arg1</span><span class="p">,</span> <span class="nx">argN</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">...</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s1">&#39;argA&#39;</span><span class="p">,</span> <span class="s1">&#39;argB&#39;</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;methodA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;methodB&#39;</span>
+<span class="p">]</span>
+</pre></div>
+
+<h3 id="send"><code>send</code><a class="headerlink" href="#send" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>String | Buffer | Whatever</td>
+<td>Data for sending via WebSockets, Http or any other transport, data source is <code>api.coder.encode()</code> function</td>
+</tr>
+<tr>
+<td>return</td>
+<td>undefined | String | Buffer | Whatever</td>
+<td>For methods in <code>sync</code> mode value, returned by send function will be returned and <code>api.parse</code> function</td>
+</tr>
+</tbody>
+</table>
+<p><div class="codehilite"><pre><span class="nx">send</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="nx">app</span><span class="p">.</span><span class="nx">apiPost</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">}</span>
+</pre></div>
+Function for sending data to server or to client. Have only one argument: <code>data</code> - encoded data. Can be string, buffer or whatever. Result of <code>this.coder.encode</code> function. If function returns any result - this result can be returned from <code>this.parse</code> function.</p>
+<p>Example code from http api server:
+<div class="codehilite"><pre><span class="p">...</span>
+<span class="nx">send</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">outData</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">outData</span> <span class="p">}</span>
+<span class="p">...</span>
+<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">session</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">inData</span><span class="p">)</span>
+<span class="p">...</span>
+</pre></div></p>
+<h3 id="error"><code>error</code><a class="headerlink" href="#error" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>Error message</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Number</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td>return</td>
+<td>undefined | Whatever</td>
+<td>For methods in <code>sync</code> mode value, returned by error function will be returned and <code>api.parse</code> function</td>
+</tr>
+</tbody>
+</table>
+<p>Server code:
+<div class="codehilite"><pre><span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Send error to client</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">sendError</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+Client code:
+<div class="codehilite"><pre><span class="nx">error</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;API error:&#39;</span><span class="p">,</span> <span class="nx">message</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+Function for errors processing. For server side use <code>this.sendError(message, code)</code> for sending error request to client.</p>
+<h3 id="coder"><code>coder</code><a class="headerlink" href="#coder" title="Permanent link"></a></h3>
+<p>Coder - class for data encodind and decoding. Coder can use additional secure options like adding API keys, request signing, encryption and etc.
+| Option name | Type | Description | Is required |
+| &mdash; | &mdash; | &mdash; | &mdash; |
+| - | String | Coder name to use | - |
+| name | String | Coder name to use | - |
+| arguments | Array | Arguments array for coder constructor | - |</p>
+<p>Coder options. Coder provides 2 methods: <code>encode</code> and <code>decode</code> for converting request object to data and back.
+<div class="codehilite"><pre><span class="nx">coder</span><span class="o">:</span> <span class="s1">&#39;Coder&#39;</span>
+</pre></div>
+Coder name to use. Coders container is <code>Reqs.coders</code>.
+<div class="codehilite"><pre><span class="nx">coder</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Coder&#39;</span><span class="p">,</span>
+    <span class="nx">arguments</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;example key&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+<code>name: 'Coder'</code>
+Coder name to use. Coders container is <code>Reqs.coders</code>.
+<div class="codehilite"><pre><span class="k">this</span><span class="p">.</span><span class="nx">coder</span> <span class="o">=</span> <span class="nx">Reqs</span><span class="p">.</span><span class="nx">coders</span><span class="p">[</span><span class="nx">options</span><span class="p">.</span><span class="nx">coder</span><span class="p">.</span><span class="nx">name</span><span class="p">]</span>
+</pre></div>
+<code>arguments: ['example key']</code>
+Arguments array for coder constructor.
+<div class="codehilite"><pre><span class="k">this</span><span class="p">.</span><span class="nx">coder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Coder</span><span class="p">(...</span><span class="nx">options</span><span class="p">.</span><span class="nx">coder</span><span class="p">.</span><span class="nx">arguments</span><span class="p">)</span>
+</pre></div>
+Default coder have only one argument: <code>key</code></p>
+<h4 id="custom-coder">Custom coder<a class="headerlink" href="#custom-coder" title="Permanent link"></a></h4>
+<p>Create coder:
+<div class="codehilite"><pre><span class="kr">class</span> <span class="nx">MyCoder</span> <span class="kr">extends</span> <span class="nx">Reqs</span><span class="p">.</span><span class="nx">Coder</span> <span class="p">{</span>
+    <span class="nx">constructor</span> <span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">arg1</span><span class="p">,</span> <span class="nx">argN</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">super</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="nx">encode</span> <span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="s1">&#39;encoded request&#39;</span>
+        <span class="k">return</span> <span class="nx">data</span>
+    <span class="p">}</span>
+
+    <span class="nx">decode</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="s1">&#39;decoded request&#39;</span>
+        <span class="k">return</span> <span class="nx">request</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+Register coder:
+<div class="codehilite"><pre><span class="nx">Reqs</span><span class="p">.</span><span class="nx">addModule</span><span class="p">(</span><span class="nx">MyCoder</span><span class="p">)</span>
+</pre></div>
+Use coder in options:
+<div class="codehilite"><pre><span class="nx">coder</span><span class="o">:</span> <span class="s1">&#39;MyCoder&#39;</span>
+</pre></div>
+<div class="codehilite"><pre><span class="nx">coder</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;MyCoder&#39;</span><span class="p">,</span>
+    <span class="nx">arguments</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+Or use in existing api instance immediatly whithout registration:
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reqs</span><span class="p">()</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">MyCoder</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">)</span>
+</pre></div>
+Or:
+<div class="codehilite"><pre><span class="nx">api</span><span class="p">.</span><span class="nx">coder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyCoder</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">)</span>
+</pre></div></p>
+<h3 id="key"><code>key</code><a class="headerlink" href="#key" title="Permanent link"></a></h3>
+<p><div class="codehilite"><pre><span class="nx">key</span><span class="o">:</span> <span class="s1">&#39;example key&#39;</span>
+</pre></div>
+Is equal:
+<div class="codehilite"><pre><span class="nx">coder</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Coder&#39;</span><span class="p">,</span>
+    <span class="nx">arguments</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;example key&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div></p>
+<h3 id="protocol"><code>protocol</code><a class="headerlink" href="#protocol" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Option name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-</td>
+<td>String</td>
+<td>Protocol name to use</td>
+<td>-</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Protocol name to use</td>
+<td>-</td>
+</tr>
+<tr>
+<td>arguments</td>
+<td>Array</td>
+<td>Arguments array for protocol constructor</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Protocol - class for converting from raw object to structured request objects. Protocol validate data types and Protocol is container for different requests constructors. Also, Protocol allow to convert requests from different sources and APIs. Default <code>Reqs.Protocol</code> contains different requests constructors used by Reqs internally for requests processing.
+<div class="codehilite"><pre><span class="nx">protocol</span><span class="o">:</span> <span class="s1">&#39;Protocol&#39;</span>
+</pre></div>
+Protocol name to use. Protocols container is <code>Reqs.protocols</code>.
+<div class="codehilite"><pre><span class="nx">protocol</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Protocol&#39;</span><span class="p">,</span>
+    <span class="nx">arguments</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+<code>name: 'Protocol'</code>
+Protocol name to use. Protocols container is <code>Reqs.protocols</code>.
+<div class="codehilite"><pre><span class="k">this</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">=</span> <span class="nx">Reqs</span><span class="p">.</span><span class="nx">protocols</span><span class="p">[</span><span class="nx">options</span><span class="p">.</span><span class="nx">protocol</span><span class="p">.</span><span class="nx">name</span><span class="p">]</span>
+</pre></div>
+<code>arguments: ['arg1', 'argN']</code>
+Arguments array for protocol constructor.
+<div class="codehilite"><pre><span class="k">this</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Protocol</span><span class="p">(...</span><span class="nx">options</span><span class="p">.</span><span class="nx">protocol</span><span class="p">.</span><span class="nx">arguments</span><span class="p">)</span>
+</pre></div>
+Default protocol doesn&rsquo;t have any arguments.</p>
+<h4 id="custom-protocol">Custom Protocol<a class="headerlink" href="#custom-protocol" title="Permanent link"></a></h4>
+<p>Protocol template:
+<div class="codehilite"><pre><span class="kr">const</span> <span class="nx">Model</span> <span class="o">=</span> <span class="nx">Reqs</span><span class="p">.</span><span class="nx">Protocol</span><span class="p">.</span><span class="nx">Model</span>
+<span class="c1">// Original types used just as example</span>
+<span class="kr">const</span> <span class="nx">types</span> <span class="o">=</span> <span class="nx">Reqs</span><span class="p">.</span><span class="nx">Protocol</span><span class="p">.</span><span class="nx">types</span>
+
+<span class="kr">class</span> <span class="nx">MyRequest</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">type</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">MyMethod</span> <span class="kr">extends</span> <span class="nx">MyRequest</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">method</span><span class="p">,</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">cbs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">super</span><span class="p">(</span><span class="nx">types</span><span class="p">.</span><span class="nx">method</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">MyCallback</span> <span class="kr">extends</span> <span class="nx">MyRequest</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">args</span><span class="p">,</span> <span class="nx">cbs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">super</span><span class="p">(</span><span class="nx">types</span><span class="p">.</span><span class="nx">callback</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">MyResolve</span> <span class="kr">extends</span> <span class="nx">MyRequest</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">resolve</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">super</span><span class="p">(</span><span class="nx">types</span><span class="p">.</span><span class="nx">resolve</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">MyReject</span> <span class="kr">extends</span> <span class="nx">MyRequest</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">super</span><span class="p">(</span><span class="nx">types</span><span class="p">.</span><span class="nx">reject</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">MyError</span> <span class="kr">extends</span> <span class="nx">MyRequest</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">message</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nx">code</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">super</span><span class="p">(</span><span class="nx">types</span><span class="p">.</span><span class="nx">error</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">MyInfo</span> <span class="kr">extends</span> <span class="nx">MyRequest</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">events</span><span class="p">,</span> <span class="nx">methods</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">super</span><span class="p">(</span><span class="nx">types</span><span class="p">.</span><span class="nx">info</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">class</span> <span class="nx">MyProtocol</span> <span class="kr">extends</span> <span class="nx">Reqs</span><span class="p">.</span><span class="nx">Protocol</span> <span class="p">{</span>
+    <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kr">super</span><span class="p">()</span>
+        <span class="c1">// Incoming requests model</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="nx">request</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">({</span>
+                <span class="nx">type</span><span class="o">:</span> <span class="nx">Model</span><span class="p">.</span><span class="nx">required</span><span class="p">(</span><span class="s1">&#39;Number&#39;</span><span class="p">)</span>
+            <span class="p">}),</span>
+            <span class="nx">method</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">({</span>
+            <span class="nx">method</span><span class="o">:</span> <span class="nx">Model</span><span class="p">.</span><span class="nx">required</span><span class="p">(</span><span class="s1">&#39;String&#39;</span><span class="p">),</span>
+                <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;String&#39;</span><span class="p">,</span>
+                <span class="nx">args</span><span class="o">:</span> <span class="s1">&#39;Array&#39;</span><span class="p">,</span>
+                <span class="nx">cbs</span><span class="o">:</span> <span class="s1">&#39;Array&#39;</span>
+            <span class="p">}),</span>
+            <span class="nx">callback</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">({</span>
+                <span class="nx">id</span><span class="o">:</span> <span class="nx">Model</span><span class="p">.</span><span class="nx">required</span><span class="p">(</span><span class="s1">&#39;String&#39;</span><span class="p">),</span>
+                <span class="nx">args</span><span class="o">:</span> <span class="s1">&#39;Array&#39;</span><span class="p">,</span>
+                <span class="nx">cbs</span><span class="o">:</span> <span class="s1">&#39;Array&#39;</span>
+            <span class="p">}),</span>
+            <span class="nx">promise</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">({</span>
+                <span class="nx">id</span><span class="o">:</span> <span class="nx">Model</span><span class="p">.</span><span class="nx">required</span><span class="p">(</span><span class="s1">&#39;String&#39;</span><span class="p">)</span>
+            <span class="p">}),</span>
+            <span class="nx">error</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">({</span>
+                <span class="nx">message</span><span class="o">:</span> <span class="nx">Model</span><span class="p">.</span><span class="nx">required</span><span class="p">(</span><span class="s1">&#39;String&#39;</span><span class="p">),</span>
+                <span class="nx">code</span><span class="o">:</span> <span class="s1">&#39;Number&#39;</span><span class="p">,</span>
+                <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;String&#39;</span>
+            <span class="p">}),</span>
+            <span class="nx">info</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">({</span>
+                <span class="nx">id</span><span class="o">:</span> <span class="nx">Model</span><span class="p">.</span><span class="nx">required</span><span class="p">(</span><span class="s1">&#39;String&#39;</span><span class="p">),</span>
+                <span class="nx">server</span><span class="o">:</span> <span class="s1">&#39;Array&#39;</span><span class="p">,</span>
+                <span class="nx">client</span><span class="o">:</span> <span class="s1">&#39;Array&#39;</span>
+            <span class="p">})</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">parse</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">validate</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span>
+        <span class="c1">// Result of parsing must be Reqs internal requests types from Reqs.Protocol.&lt;type&gt;</span>
+        <span class="kd">var</span> <span class="nx">r</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="nx">types</span><span class="p">.</span><span class="nx">method</span><span class="o">:</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">method</span><span class="p">.</span><span class="nx">validate</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span>
+                <span class="nx">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reqs</span><span class="p">.</span><span class="nx">Protocol</span><span class="p">.</span><span class="nx">Method</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">args</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">cbs</span><span class="p">)</span>
+
+            <span class="k">case</span> <span class="nx">types</span><span class="p">.</span><span class="nx">callback</span><span class="o">:</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">callback</span><span class="p">.</span><span class="nx">validate</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span>
+                <span class="nx">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reqs</span><span class="p">.</span><span class="nx">Protocol</span><span class="p">.</span><span class="nx">Callback</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">args</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">cbs</span><span class="p">)</span>
+
+            <span class="k">case</span> <span class="nx">types</span><span class="p">.</span><span class="nx">resolve</span><span class="o">:</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">promise</span><span class="p">.</span><span class="nx">validate</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span>
+                <span class="nx">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reqs</span><span class="p">.</span><span class="nx">Protocol</span><span class="p">.</span><span class="nx">Resolve</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">resolve</span><span class="p">)</span>
+
+            <span class="k">case</span> <span class="nx">types</span><span class="p">.</span><span class="nx">reject</span><span class="o">:</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">promise</span><span class="p">.</span><span class="nx">validate</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span>
+                <span class="nx">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reqs</span><span class="p">.</span><span class="nx">Protocol</span><span class="p">.</span><span class="nx">Reject</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">reject</span><span class="p">)</span>
+
+            <span class="k">case</span> <span class="nx">types</span><span class="p">.</span><span class="nx">error</span><span class="o">:</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">validate</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span>
+                <span class="nx">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reqs</span><span class="p">.</span><span class="nx">Protocol</span><span class="p">.</span><span class="nb">Error</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">message</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">code</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+
+            <span class="k">case</span> <span class="nx">types</span><span class="p">.</span><span class="nx">info</span><span class="o">:</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">.</span><span class="nx">info</span><span class="p">.</span><span class="nx">validate</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span>
+                <span class="nx">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reqs</span><span class="p">.</span><span class="nx">Protocol</span><span class="p">.</span><span class="nx">Info</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">events</span><span class="p">,</span> <span class="nx">request</span><span class="p">.</span><span class="nx">methods</span><span class="p">)</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="nx">r</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="k">throw</span><span class="p">(</span><span class="err">`</span><span class="nx">Unknown</span> <span class="nx">request</span> <span class="nx">type</span><span class="o">:</span> <span class="nx">$</span><span class="p">{</span><span class="nx">request</span><span class="p">.</span><span class="nx">type</span><span class="p">}</span><span class="err">`</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">r</span>
+    <span class="p">}</span>
+
+    <span class="c1">// In runtime Reqs will use this constructors for requests creation</span>
+    <span class="c1">// Example:</span>
+    <span class="c1">//   var r = new this.protocol.Method(&#39;method&#39;, args, cbs)</span>
+    <span class="nx">MyProtocol</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">Method</span> <span class="o">=</span> <span class="nx">MyMethod</span>
+    <span class="nx">MyProtocol</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">Callback</span> <span class="o">=</span> <span class="nx">MyCallback</span>
+    <span class="nx">MyProtocol</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">Resolve</span> <span class="o">=</span> <span class="nx">MyResolve</span>
+    <span class="nx">MyProtocol</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">Reject</span> <span class="o">=</span> <span class="nx">MyReject</span>
+    <span class="nx">MyProtocol</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nb">Error</span> <span class="o">=</span> <span class="nx">MyError</span>
+    <span class="nx">MyProtocol</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">Info</span> <span class="o">=</span> <span class="nx">MyInfo</span>
+<span class="p">}</span>
+</pre></div>
+Register protocol:
+<div class="codehilite"><pre><span class="nx">Reqs</span><span class="p">.</span><span class="nx">addModule</span><span class="p">(</span><span class="nx">MyProtocol</span><span class="p">)</span>
+</pre></div>
+Use protocol in options:
+<div class="codehilite"><pre><span class="nx">coder</span><span class="o">:</span> <span class="s1">&#39;MyProtocol&#39;</span>
+</pre></div>
+<div class="codehilite"><pre><span class="nx">coder</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;MyProtocol&#39;</span><span class="p">,</span>
+    <span class="nx">arguments</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+Or use in existing api instance immediatly whithout registration:
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Reqs</span><span class="p">()</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">MyProtocol</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">)</span>
+</pre></div>
+Or:
+<div class="codehilite"><pre><span class="nx">api</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyProtocol</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">)</span>
+</pre></div></p>
+<h4 id="constructor-protocolmodel">Constructor <code>Protocol.Model</code><a class="headerlink" href="#constructor-protocolmodel" title="Permanent link"></a></h4>
+<p>Used by <code>Protocol.parse</code> for request structure and data types validation.
+Example use:
+<div class="codehilite"><pre><span class="kr">const</span> <span class="nx">Model</span> <span class="o">=</span> <span class="nx">Reqs</span><span class="p">.</span><span class="nx">Protocol</span><span class="p">.</span><span class="nx">Model</span>
+<span class="kd">var</span> <span class="nx">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">request</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">({</span>
+        <span class="nx">type</span><span class="o">:</span> <span class="nx">Model</span><span class="p">.</span><span class="nx">required</span><span class="p">(</span><span class="s1">&#39;Number&#39;</span><span class="p">)</span>
+    <span class="p">}),</span>
+    <span class="nx">method</span><span class="o">:</span> <span class="k">new</span> <span class="nx">Model</span><span class="p">({</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="nx">Model</span><span class="p">.</span><span class="nx">required</span><span class="p">(</span><span class="s1">&#39;String&#39;</span><span class="p">),</span>
+        <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;String&#39;</span><span class="p">,</span>
+        <span class="nx">args</span><span class="o">:</span> <span class="s1">&#39;Array&#39;</span><span class="p">,</span>
+        <span class="nx">cbs</span><span class="o">:</span> <span class="s1">&#39;Array&#39;</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+</pre></div>
+And validation in protocol&rsquo;s context:
+<div class="codehilite"><pre><span class="nx">parse</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">models</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">validate</span><span class="p">(</span><span class="nx">protocol</span><span class="p">,</span> <span class="nx">request</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div></p>
+<h4 id="constructor-protocolmethod">Constructor <code>Protocol.Method</code><a class="headerlink" href="#constructor-protocolmethod" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>methodName</td>
+<td>String</td>
+<td>Method name to call</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>ID of the request</td>
+<td>-</td>
+</tr>
+<tr>
+<td>arguments</td>
+<td>Array</td>
+<td>Arguments</td>
+<td>-</td>
+</tr>
+<tr>
+<td>callbacks</td>
+<td>Array</td>
+<td>callbacks ID positions in arguments</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h4 id="constructor-protocolcallback">Constructor <code>Protocol.Callback</code><a class="headerlink" href="#constructor-protocolcallback" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>ID of the request</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>arguments</td>
+<td>Array</td>
+<td>Arguments</td>
+<td>-</td>
+</tr>
+<tr>
+<td>callbacks</td>
+<td>Array</td>
+<td>callbacks ID positions in arguments</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h4 id="constructor-protocolresolve">Constructor <code>Protocol.Resolve</code><a class="headerlink" href="#constructor-protocolresolve" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>ID of the request</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>result</td>
+<td>Object</td>
+<td>Result</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h4 id="constructor-protocolreject">Constructor <code>Protocol.Reject</code><a class="headerlink" href="#constructor-protocolreject" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>ID of the request</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>reject</td>
+<td>Object</td>
+<td>Reject result error</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h4 id="constructor-protocolerror">Constructor <code>Protocol.Error</code><a class="headerlink" href="#constructor-protocolerror" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td>String</td>
+<td>error message</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Number</td>
+<td>Error code</td>
+<td>-</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>ID of the request</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h4 id="constructor-protocolinfo">Constructor <code>Protocol.Info</code><a class="headerlink" href="#constructor-protocolinfo" title="Permanent link"></a></h4>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>ID of the request</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>events</td>
+<td>Array</td>
+<td>List of events (for client&rsquo;s api)</td>
+<td>-</td>
+</tr>
+<tr>
+<td>methods</td>
+<td>Array</td>
+<td>List of methods (for client&rsquo;s api)</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="session"><code>session</code><a class="headerlink" href="#session" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Option name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arguments</td>
+<td>String<br>Array</td>
+<td>One session argument<br>Array of session arguments</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Session options. Session creation: <code>var session = api.new()</code>. Usually session used for multiple connections. For example - on server side it must be used if server provide API for multiple users. On client side session isn&rsquo;t required.</p>
+<p><div class="codehilite"><pre><span class="nx">session</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">arguments</span><span class="o">:</span> <span class="s1">&#39;conn&#39;</span>
+<span class="p">}</span>
+</pre></div>
+<div class="codehilite"><pre><span class="nx">session</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">arguments</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div></p>
+<h4 id="arguments"><code>arguments</code><a class="headerlink" href="#arguments" title="Permanent link"></a></h4>
+<p>Name - for one argument or array of names for several arguments. Allow to automatically attach additional info or objects to session instance.
+<code>arguments: 'conn'</code>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">session</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="k">new</span><span class="p">(</span><span class="s1">&#39;conn&#39;</span><span class="p">)</span>
+<span class="nx">session</span><span class="p">.</span><span class="nx">conn</span> <span class="o">===</span> <span class="s1">&#39;conn&#39;</span>
+</pre></div>
+<code>arguments: ['a', 'b', 'c']</code>
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">session</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="k">new</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="nx">session</span><span class="p">.</span><span class="nx">a</span> <span class="o">===</span> <span class="s1">&#39;a&#39;</span>
+<span class="nx">session</span><span class="p">.</span><span class="nx">b</span> <span class="o">===</span> <span class="s1">&#39;b&#39;</span>
+<span class="nx">session</span><span class="p">.</span><span class="nx">c</span> <span class="o">===</span> <span class="s1">&#39;c&#39;</span>
+</pre></div></p>
+<h3 id="newid"><code>newid</code><a class="headerlink" href="#newid" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>return</td>
+<td>String</td>
+<td>New ID for callback</td>
+<td>Required</td>
+</tr>
+</tbody>
+</table>
+<p>Callbacks ID generator. By default - simple counter in <code>_id</code> property.
+<div class="codehilite"><pre><span class="nx">newid</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">&#39;new id&#39;</span>
+<span class="p">}</span>
+</pre></div></p>
+<h3 id="newpid"><code>newpid</code><a class="headerlink" href="#newpid" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>return</td>
+<td>String</td>
+<td>New ID for promise</td>
+<td>Required</td>
+</tr>
+</tbody>
+</table>
+<p>Promises ID generator. By default - simple counter in <code>_pid</code> property.
+<div class="codehilite"><pre><span class="nx">newpid</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="s1">&#39;new pid&#39;</span>
+<span class="p">}</span>
+</pre></div></p>
+<h2 id="reqs-methods">Reqs methods<a class="headerlink" href="#reqs-methods" title="Permanent link"></a></h2>
+<p>Index:</p>
+<p><a href="#parse">parse</a><br>
+<a href="#addMethod">addMethod</a><br>
+<a href="#addMethods">addMethods</a><br>
+<a href="#createMethod">createMethod</a><br>
+<a href="#method">method</a><br>
+<a href="#methodApply">methodApply</a><br>
+<a href="#methodSync">methodSync</a><br>
+<a href="#methodAsync">methodAsync</a><br>
+<a href="#methodSyncApply">methodSyncApply</a><br>
+<a href="#methodAsyncApply">methodAsyncApply</a><br>
+<a href="#build">build</a><br></p>
+<h3 id="parse"><code>parse</code><a class="headerlink" href="#parse" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>String | Buffer | Whatever</td>
+<td>Incoming raw data</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>return</td>
+<td>Depends on <code>send</code> and command in request</td>
+<td></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Parse the request data. Data type is string/buffer/whatever from client/server.
+<div class="codehilite"><pre><span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+</pre></div></p>
+<h3 id="addmethod"><code>addMethod</code><a class="headerlink" href="#addmethod" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>String</td>
+<td>Method name</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>return</td>
+<td>Reqs</td>
+<td><code>this</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Add method to <code>api.methods</code> list. Basically creates wrapper for <code>methodApply</code> with cached method name.
+<div class="codehilite"><pre><span class="nx">api</span><span class="p">.</span><span class="nx">addMethod</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">)</span>
+</pre></div></p>
+<h3 id="addmethods"><code>addMethods</code><a class="headerlink" href="#addmethods" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#methods">methods</a></td>
+<td>-</td>
+<td>-</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>safe</td>
+<td>Boolean</td>
+<td>Don&rsquo;t oeverwrite existing methods (<code>true</code> by default)</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Add methods to <code>api.methods</code> list.</p>
+<h3 id="createmethod"><code>createMethod</code><a class="headerlink" href="#createmethod" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>String</td>
+<td>Method name</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>xt</td>
+<td>Function</td>
+<td>Function that returns arguments array for method</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>String</td>
+<td>Method mode: &lsquo;async&rsquo; | &lsquo;sync&rsquo;</td>
+<td>-</td>
+</tr>
+<tr>
+<td>xtThen</td>
+<td>Function</td>
+<td>Function for <code>promise.then</code> method</td>
+<td>-</td>
+</tr>
+<tr>
+<td>xtCatch</td>
+<td>Function</td>
+<td>Function for <code>promise.catch</code>  method</td>
+<td>-</td>
+</tr>
+<tr>
+<td>safe</td>
+<td>Boolean</td>
+<td>Don&rsquo;t oeverwrite existing methods (<code>true</code> by default)</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Create method to <code>api.methods</code> list with arguments preprocessor function and additional options. Creates wrapper for <code>methodApply</code> with cached method name and fixed mode, if <code>mode</code> argument presented.
+<div class="codehilite"><pre><span class="nx">api</span><span class="p">.</span><span class="nx">createMethod</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">,</span> <span class="nx">xt</span><span class="p">,</span> <span class="nx">mode</span><span class="p">,</span> <span class="nx">xtThen</span><span class="p">,</span> <span class="nx">xtCatch</span><span class="p">)</span>
+</pre></div></p>
+<h3 id="method"><code>method</code><a class="headerlink" href="#method" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>String</td>
+<td>Method name</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>&hellip;args</td>
+<td>Any</td>
+<td>Method arguments</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Call method with arguments. Mode depends on mode flag.
+<div class="codehilite"><pre><span class="nx">api</span><span class="p">.</span><span class="nx">method</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">method</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">,</span> <span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">)</span>
+</pre></div></p>
+<h3 id="methodapply"><code>methodApply</code><a class="headerlink" href="#methodapply" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>String</td>
+<td>Method name</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>arguments</td>
+<td>Array</td>
+<td>Method arguments</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Call method with arguments array. Mode depends on mode flag.
+<div class="codehilite"><pre><span class="nx">api</span><span class="p">.</span><span class="nx">methodApply</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">])</span>
+</pre></div></p>
+<h3 id="methodsync"><code>methodSync</code><a class="headerlink" href="#methodsync" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>String</td>
+<td>Method name</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>&hellip;args</td>
+<td>Any</td>
+<td>Method arguments</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Call method with arguments in synchronous mode.
+<div class="codehilite"><pre><span class="nx">api</span><span class="p">.</span><span class="nx">methodSync</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">methodSync</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">,</span> <span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">)</span>
+</pre></div></p>
+<h3 id="methodasync"><code>methodAsync</code><a class="headerlink" href="#methodasync" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>String</td>
+<td>Method name</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>&hellip;args</td>
+<td>Any</td>
+<td>Method arguments</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Call method with arguments in asynchronous mode.
+<div class="codehilite"><pre><span class="nx">api</span><span class="p">.</span><span class="nx">methodAsync</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">,</span> <span class="p">...</span><span class="nx">args</span><span class="p">)</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">methodAsync</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">,</span> <span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">)</span>
+</pre></div></p>
+<h3 id="methodsyncapply"><code>methodSyncApply</code><a class="headerlink" href="#methodsyncapply" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>String</td>
+<td>Method name</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>arguments</td>
+<td>Array</td>
+<td>Method arguments</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Call method with arguments array in synchronous mode.
+<div class="codehilite"><pre><span class="nx">api</span><span class="p">.</span><span class="nx">methodSyncApply</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">])</span>
+</pre></div></p>
+<h3 id="methodasyncapply"><code>methodAsyncApply</code><a class="headerlink" href="#methodasyncapply" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>method</td>
+<td>String</td>
+<td>Method name</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>arguments</td>
+<td>Array</td>
+<td>Method arguments</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Call method with arguments array in asynchronous mode.
+<div class="codehilite"><pre><span class="nx">api</span><span class="p">.</span><span class="nx">methodAsyncApply</span><span class="p">(</span><span class="s1">&#39;method&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;arg1&#39;</span><span class="p">,</span> <span class="s1">&#39;argN&#39;</span><span class="p">])</span>
+</pre></div></p>
+<h3 id="build"><code>build</code><a class="headerlink" href="#build" title="Permanent link"></a></h3>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Description</th>
+<th>Is required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cb</td>
+<td>Function</td>
+<td>Callback</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Request from server list of available events and methods.
+<div class="codehilite"><pre><span class="nx">api</span><span class="p">.</span><span class="nx">build</span><span class="p">()</span>
+</pre></div></p>
+<hr />
+<h1 id="develop">Develop<a class="headerlink" href="#develop" title="Permanent link"></a></h1>
+<p>Build library:</p>
+<div class="codehilite"><pre>npm run build
+</pre></div>
+
+
+<p>Watch files:</p>
+<div class="codehilite"><pre>npm run watch
+</pre></div>
+
+
+<h2 id="what-next">What next?<a class="headerlink" href="#what-next" title="Permanent link"></a></h2>
+<ol>
+<li>Rewrite build script or use some other tool to get feature for building client with difference protocols and coders.</li>
+<li>Add feature for detecting events arguments types (via comments parsing or options) and events arguments types validation.</li>
+<li>OpenAPI / Swagger support.</li>
+<li>(?) Add feature for requesting API documentation via API.</li>
+<li>Feel free to suggest new features.</li>
+</ol></article></body></html>

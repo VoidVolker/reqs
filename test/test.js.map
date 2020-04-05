@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "test.js",
+  "sourceRoot": "..",
+  "sources": [
+    "test/test.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA,OAAO,CAAC,GAAR,CAAY,QAAZ",
+  "sourcesContent": [
+    "console.log 'Test 0'"
+  ]
+}

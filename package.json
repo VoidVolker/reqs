@@ -1,23 +1,43 @@
 {
-  "name": "node-reqs",
-  "version": "4.2.1",
+  "_from": "node-reqs",
+  "_id": "node-reqs@4.2.2",
+  "_inBundle": false,
+  "_integrity": "sha1-oPimFjUK+ytsegUMk1h9mjkBx2c=",
+  "_location": "/node-reqs",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "node-reqs",
+    "name": "node-reqs",
+    "escapedName": "node-reqs",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/node-reqs/-/node-reqs-4.2.2.tgz",
+  "_shasum": "a0f8a616350afb2b6c7a050c93587d9a3901c767",
+  "_spec": "node-reqs",
+  "_where": "/home/me/projects/vvr",
+  "author": {
+    "name": "Void Volker",
+    "email": "vvr@tutanota.com",
+    "url": "https://github.com/VoidVolker"
+  },
+  "bugs": {
+    "url": "https://github.com/VoidVolker/reqs/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
   "description": "REQuest jSon interface for WebSockets, HTTP and any other protocols",
-  "main": "reqs.js",
-  "scripts": {
-    "test": "node ./test/test.js",
-    "build": "coffee -b -m -c ./dev/*.coffee && cd dev && node build",
-    "b": "coffee -b -m -c ./dev/*.coffee && cd dev && node build",
-    "watch": "./dev/node_modules/nano-watcher/bin/nano-watcher -c ./dev",
-    "w": "./dev/node_modules/nano-watcher/bin/nano-watcher -c ./dev",
-    "patch": "git status && npm version patch",
-    "minor": "git status && npm version minor"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/VoidVolker/reqs.git"
-  },
+  "homepage": "https://github.com/VoidVolker/reqs#readme",
   "keywords": [
     "reqs",
+    "node-reqs",
     "request",
     "json",
     "websockets",
@@ -26,10 +46,36 @@
     "HTTP API",
     "Web API"
   ],
-  "author": "Void Volker <vvr@tutanota.com> (https://github.com/VoidVolker)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/VoidVolker/reqs/issues"
+  "main": "dist/node/index.js",
+  "name": "node-reqs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VoidVolker/reqs.git"
   },
-  "homepage": "https://github.com/VoidVolker/reqs#readme"
+  "scripts": {
+    "b": "coffee -c -b -m ./ && ./scripts/build.sh",
+    "build": "coffee -c -b -m ./ && ./scripts/build.sh",
+    "major": "git status & npm version major",
+    "minor": "git status & npm version minor",
+    "patch": "git status & npm version patch",
+    "test": "node ./test/test",
+    "w": "./scripts/coffee.sh",
+    "watch": "./scripts/coffee.sh"
+  },
+  "version": "4.2.2",
+  "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.7.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.7.5",
+    "@babel/preset-env": "^7.7.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-minify": "^0.5.1",
+    "babel-register": "^6.26.0",
+    "core-js": "^3.4.4",
+    "express": "^4.17.1",
+    "nodejs-websocket": "^1.7.2"
+  },
+  "type": "commonjs"
 }

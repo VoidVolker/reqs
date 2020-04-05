@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "Tools.js",
+  "sourceRoot": "../..",
+  "sources": [
+    "src/lib/Tools.coffee"
+  ],
+  "names": [],
+  "mappings": ";AAAA,IAAA;;AAAM;;;EAAN,MAAA,MAAA;IAKoB,OAAf,SAAe,CAAC,CAAD,CAAA;aAAO,CAAC,CAAC,IAAF,CAAO,CAAP,CAAA,KAAa;IAApB;;IACA,OAAf,QAAe,CAAC,CAAD,CAAA;aAAO,CAAC,CAAC,IAAF,CAAO,CAAP,CAAA,KAAa;IAApB;;IAGA,OAAf,QAAe,CAAC,CAAD,CAAA;aAAO,CAAC,CAAC,IAAF,CAAO,CAAP,CAAA,KAAa;IAApB;;IACA,OAAf,UAAe,CAAC,CAAD,CAAA;aAAO,CAAC,CAAC,IAAF,CAAO,CAAP,CAAA,KAAa;IAApB;;IACA,OAAf,QAAe,CAAC,CAAD,CAAA;aAAO,CAAA,KAAK,CAAL,IAAW,CAAC,CAAC,CAAC,IAAF,CAAO,CAAP,CAAA,KAAa,iBAAd,EAAlB;IAAA;;IACA,OAAf,MAAe,CAAC,CAAD,CAAA;aAAO,CAAC,CAAC,IAAF,CAAO,CAAP,CAAS,CAAC,KAAV,CAAgB,CAAhB,EAAmB,CAAC,CAApB,EAAP;IAAA;;IACA,OAAf,IAAe,CAAC,CAAD,CAAA;aAAO,MAAM,CAAC,MAAP,CAAc,MAAM,CAAC,MAAP,CAAc,IAAd,CAAd,EAAmC,CAAnC;IAAP;;EAbpB;;EAEI,CAAA,GAAI,MAAM,CAAC,SAAS,CAAC;;EACrB,KAAA,GAAQ,KAAK,CAAC;;;EAKd,KAAC,CAAA,OAAD,GAAgB,KAAK,CAAC;;;;;;AAR1B",
+  "sourcesContent": [
+    "class Tools\n\n    t = Object.prototype.toString\n    isArr = Array.isArray\n\n    @isBoolean:     (v) -> t.call(v) is '[object Boolean]'\n    @isString:      (v) -> t.call(v) is '[object String]'\n    # @isArray:       (v) -> isArr v                                      # t.call(v) is '[object Array]'\n    @isArray:       Array.isArray\n    @isObject:      (v) -> t.call(v) is '[object Object]'\n    @isFunction:    (v) -> t.call(v) is '[object Function]'\n    @isNumber:      (v) -> v is v and (t.call(v) is '[object Number]')  # NaN === NaN -> false\n    @typeOf:        (v) -> t.call(v).slice 8, -1                        # Attention! typeOf(NaN) === 'Number'\n    @null:          (o) -> Object.assign Object.create(null), o\n\n    # @isBoolean.type = 'Boolean'\n    # @isString.type = 'String'\n    # @isArray.type = 'Array'         # <- Reason of wrapping of Array.isArray\n    # @isObject.type = 'Object'\n    # @isFunction.type = 'Function'\n    # @isNumber.type = 'Number'\n"
+  ]
+}
