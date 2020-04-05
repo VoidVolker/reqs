@@ -414,8 +414,9 @@ Request processing:
 
 ## Examples run
 
-    npm i node-reqs --save-dev
+    npm i node-reqs
     cd ./node_modules/node-reqs/
+    npm i -D
 
     node --inspect ./examples/ws/server/server.js
     node --inspect ./examples/ws/node-client/client.js
