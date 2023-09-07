@@ -335,7 +335,7 @@ var api = new Reqs({
         arguments: 'conn'
     },
     key: 'example key',
-    mode: 'sync' // Methods call mode for all methods whithout async/sync flag
+    mode: 'sync' // Methods call mode for all methods without async/sync flag
 });
 
 var wsc = ws.connect(url, function() {
@@ -455,7 +455,7 @@ Create new Reqs instance. Instance provides Reqs methods for calling user-define
 | Method mode | Event handler return value type | Description | When to use |
 | --- | --- | --- | --- |
 | `sync` | - | In sync mode return value is ignored | If you don't want to use promise or you have simple synchronous code everywhere |
-| `async` | Any, not `Promise` | Synchronous code in event whithout promise | When method caller want to use promise |
+| `async` | Any, not `Promise` | Synchronous code in event without promise | When method caller want to use promise |
 | `async` | `Promise` | Asynchronous code in event handler or operation required some time (DB Acces, for example) | Asynchronous code everywhere |
 
 Anyway, test all variants and select most comfortable mode for your case.
@@ -606,7 +606,7 @@ Mode switch in runtime:
 api.async = true        // mode === 'async'
 api.async = false       // mode === 'sync'
 ```
-This mode flag is affects only to methods declared whithout mode option. If method declared with mode option - flag api.async is ignored for this method.
+This mode flag is affects only to methods declared without mode option. If method declared with mode option - flag api.async is ignored for this method.
 
 #### Array with methods options and names:
 ```javascript
@@ -741,7 +741,7 @@ coder: {
     arguments: ['arg1', 'argN']
 }
 ```
-Or use in existing api instance immediatly whithout registration:
+Or use in existing api instance immediatly without registration:
 ```javascript
 var api = new Reqs()
 api.use(MyCoder, 'key', 'arg1', 'argN')
@@ -936,7 +936,7 @@ coder: {
     arguments: ['arg1', 'argN']
 }
 ```
-Or use in existing api instance immediatly whithout registration:
+Or use in existing api instance immediatly without registration:
 ```javascript
 var api = new Reqs()
 api.use(MyProtocol, 'key', 'arg1', 'argN')
